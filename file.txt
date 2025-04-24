@@ -1,8 +1,12 @@
-Projek AOL ini berupa aplikasi game bertemakan visual novel. Game visual novel ini bertujuan untuk menyebarkan awarness mengenai pentingnya menjaga mental health.
-Game ini dikembangkan dengan menggunakan renpy.
+Deskripsi AOL
+
+Berdasarkan data WHO, pada tahun 2019, 970 juta orang di dunia hidup dengan mental disorder, dengan yang paling umum adalah kecemasan dan depresi. Selain itu, berdasarkan data Institute for Health Metrics and Evaluation, sekitar 13.9% populasi di dunia menderita mental disorder pada tahun 2021. Selain itu, untuk meningkatkan minat pengguna untuk mempelajari pentingnya kesehatan mental, kami membuat suatu game berbasis visual novel. Dengan pendekatan ini, pengguna dapat merasakan pengalaman interaktif yang lebih mendalam melalui elemen cerita, karakter, dan visual yang menarik. Kehadiran elemen visual membantu menciptakan suasana yang lebih nyaman dan familiar. Nantinya, game ini akan dikembangkan dengan menggunakan Ren'py, dengan bantuan Figma dalam pembuatan mockup game.
+
+
+Fitur AOL
 
 Fitur-fitur dari aplikasi ini, yaitu:
-- Memainkan game visual novel
+- Berinteraksi melalui game visual novel
 - Memilih opsi dialog untuk mendapatkan ending yang berbeda
 - Menyimpan progress
 - Menyimpan ending yang sudah didapatkan
