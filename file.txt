@@ -1,0 +1,9 @@
+Projek AOL ini berupa aplikasi game bertemakan visual novel. Game visual novel ini bertujuan untuk menyebarkan awarness mengenai pentingnya menjaga mental health.
+Game ini dikembangkan dengan menggunakan renpy.
+
+Fitur-fitur dari aplikasi ini, yaitu:
+- Memainkan game visual novel
+- Memilih opsi dialog untuk mendapatkan ending yang berbeda
+- Menyimpan progress
+- Menyimpan ending yang sudah didapatkan
+- Merujuk ke website mental health
