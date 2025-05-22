@@ -1,30 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 48, in script
-    with moveinright(0.2)
-  File "game/script.rpy", line 48, in <module>
-    with moveinright(0.2)
-Exception: MoveTransition can only be applied to one or all layers, not float.
+  File "game/script.rpy", line 74, in script
+    show haru sad talk
+Exception: Image 'haru sad' does not accept attributes 'talk'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 48, in script
-    with moveinright(0.2)
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 1367, in execute
-    trans = renpy.python.py_eval(self.expr)
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\python.py", line 1218, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\python.py", line 1211, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 48, in <module>
-    with moveinright(0.2)
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\movetransition.py", line 538, in MoveTransition
-    raise Exception("MoveTransition can only be applied to one or all layers, not %s." % type(widget).__name__)
-Exception: MoveTransition can only be applied to one or all layers, not float.
+  File "game/script.rpy", line 74, in script
+    show haru sad talk
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 1124, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 1087, in show_imspec
+    renpy.config.show(name,
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\exports\displayexports.py", line 477, in show
+    if not base.find_target() and renpy.config.missing_show:
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\image.py", line 421, in find_target
+    self.target = target._duplicate(a)
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\displayable.py", line 249, in _duplicate
+    args.extraneous()
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\displayable.py", line 109, in extraneous
+    raise Exception("Image '{}' does not accept attributes '{}'.".format(
+Exception: Image 'haru sad' does not accept attributes 'talk'.
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 MentalHealthVN 1.0
-Thu May 22 02:31:32 2025
+Thu May 22 12:54:51 2025

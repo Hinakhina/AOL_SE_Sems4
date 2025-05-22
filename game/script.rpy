@@ -26,29 +26,36 @@ label chapter1:
     with fade
 
     # play music "audio/hospital_ambient.mp3" loop fadein 1.0
-    scene bg peach
-    show haru sad
+    show haru sad 
+    with dissolve
+    pause (2.0)
     show haru frown
     haru "Spring crept quietly this year, like a secret too shy to be spoken aloud."
     show haru sad
+    pause(1.0)
     show haru frown
     haru "I was here again. Another mild fever. Another few days tucked behind white walls."
     show haru sad
-    
+    pause(1.0)
     # play sound "audio/cirp.mp3" noloop fadein 1.0
 
     show haru frown
     haru "They said it wasn\'t serious, but somehow it always felt heavier than that."
     show haru sad
+    pause(1.0)
     show haru frown
     haru "Maybe because loneliness always adds its own weight."
+    show haru sad
+    pause(2.0)
 
     # play sound "audio/steps.mp3" noloop fadein 1.0 
-
+    
     show natsu hospital smile at right
     with MoveTransition(1.0, enter=offscreenright, enter_time_warp=_warper.easein)
+    pause(1.0)
     show natsu hospital talk at right
     natsu "Hey. You look like you\'re about to cry. Are you okay?"
+    show natsu hospital smile at right
 
     menu:
         "{i}{b}(Smile awkwardly){/b}{/i}":
@@ -62,34 +69,62 @@ label chapter1:
 
 
 label choice_c1_1:
-    show haru 
+    show haru sad
+    pause(1.0)
+    show haru sad talk
     haru "I\'m fine. Just... the flowers are pretty, that\'s all."
+    show haru sad
+    pause(1.0)
     show natsu hospital smile at right
+    pause(1.0)
     show natsu hospital talk at right
     natsu "They\'re alright, I guess. But they\'re not nearly as interesting as you."
+    show natsu hospital smile at right
+    pause(1.0)
     jump continue_c1
 
 label choice_c1_2:
-    show haru thinking at left
+    show haru sad
+    pause(1.0)
+    show haru sad talk
     haru "I didn\'t know how to respond. His voice felt like sunlight on a rainy day."
+    show haru sad 
+    pause(1.0)
     show natsu hospital smile at right
+    pause(1.0)
     show natsu hospital talk at right
     natsu "Don\'t worry. I get it. Hospitals aren\'t exactly happy places."
+    show natsu hospital smile at right
+    pause(1.0)
     jump continue_c1   
 
 label choice_c1_3:
-    show haru at left
+    show haru sad 
+    pause(1.0)
+    show haru sad talk
     haru "Not really. Being here again... it just sucks."
-    show natsu nodding at right
+    show haru sad 
+    pause(1.0)
+    show natsu hospital smile at right
+    pause(1.0)
+    show natsu hospital talk at right
     natsu "Yeah. Been there. Actually... still here."
+    show natsu hospital smile at right
+    pause(1.0)
     jump continue_c1   
 
 label continue_c1:
-    scene black
+    scene bg grey
     with fade
 
-    show haru
+    pause(1.0)
+
+    show haru smile
+    with dissolve
+    pause(1.0)
+    show haru smile talk
     haru "That\'s how I met Natsu. A boy who lived more in hospital rooms than anywhere else. But he smiled like someone who had the whole world tucked into his pocket."
+    show haru smile
 
     scene bg playing card
     with fade 
@@ -99,76 +134,124 @@ label continue_c1:
 
     scene bg park
     with fade
-    show natsu at left
+    show natsu hospital smile at right
+    with dissolve
+    pause(1.0)
+    show natsu hospital talk at right 
     natsu "What would you miss the most about me?"
-    show haru surprised at right
-    "..."
-    show haru quitely at right
+    show natsu hospital smile at right
+    pause(1.0)
+    show haru frown
+    pause(2.0)
+    show haru sad talk
     haru "I\'ll miss borrowing your books to read your notes in the margins. The closest I came to reading your mind."
+    show haru smile
+    pause(2.0)
 
     scene bg hospital room night 
     with fade 
-    show natsu sad
+    show natsu hospital smile
+    with dissolve
+    pause(1.0)
+    show natsu hospital talk
     natsu "But how can you love a person who is not whole?"
+    show natsu hospital smile
+    pause(1.0)
 
     menu:
         "Who says you\'re not whole?":
-            show natsu at left
-            show haru at right
+            show natsu hospital smile
+            pause(1.0)
+            show haru smile at right
+            pause(1.0)
+            show haru smile talk at right
             haru "Who says you\'re not whole? Just because you\'re different doesn\'t mean you're incomplete."
-            show haru smiling touched at right
+            show haru smile at right
+            pause(1.0)
+            show natsu hospital talk
             natsu "You\'re strange, you know that?"
+            show natsu hospital smile
+            pause(1.0)
         "Because even broken things are beautiful.":
-            show natsu at left
-            show haru at right
+            show natsu hospital smile
+            pause(1.0)
+            show haru smile at right
+            pause(1.0)
+            show haru smile talk at right
             haru "Because you, like the moon, are not only beautiful when full. In all of your phases and fractions and ivory-white pieces, I love you."
-            show natsu eyes wide at left
-            natsu eyes wide "..."
-            show natsu laughing at left
-            natsu laughing  "You\'re really something else."
+            show haru smile at right
+            pause(1.0)
+            show natsu hospital smile
+            pause(2.0)
+            show natsu hospital talk
+            natsu  "You\'re really something else."
+            show natsu hospital smile
+            pause(1.0)
         "{i}{b}(Stay silent, but reach for his hand.){/b}{/i}":
+            show haru smile at right
             "{i}(Natsu looks surprised but squeezes Haru\'s hand tightly.){/i}"
-            show natsuu whisper
-            natsu whisper "{i}Thanks... Haru{/i}"
+            show natsu hospital smile
+            pause(1.0)
+            show natsu hospital talk
+            natsu "{i}Thanks... Haru{/i}"
+            show natsu hospital smile
+            pause(1.0)
     
     scene bg spending time
     with fade
     "{b}(April){/b}"
 
-    scene black 
+    scene bg black 
     with fade
     # play sound "audio/emergency.mp4" loop 
+    pause (2.0)
     "The walls of hospitals have heard more prayers than the walls of churches..."
     "Because love is felt most when it's leaving."
     # stop sound fadeout 1.0
+    pause(2.0)
 
     scene bg hospital
     with fade
-    show haru praying
+    show haru sad cry
+    with dissolve
+    pause(2.0)
+    show haru frown cry
     haru "Lord, I worry that love is grief."
+    show haru sad cry
+    pause(1.0)
+    show haru frown cry
     haru "Lord, I fear that this grief will last forever. I put on a brave face and pretend it doesn't bother me, but it does. It does. Where am I to store all this heartache?"
+    show haru sad cry
+    pause(1.0)
 
     "Nobody has ever measured, not even the poets, how much the heart can hold."
 
     scene bg hospital room night
     with fade
-    show haru at left
+    show haru smile tear at right
+    with dissolve
+    pause(2.0)
+    show haru smile sad at right
     haru "I came to the garden today. Alone."
+    show haru smile tear at right
+    pause(1.0)
+    show haru smile sad at right
     haru "The flowers were still blooming. But it felt like the whole world forgot how to be colorful."
+    show haru smile tear at right
+    pause(2.0)
 
     jump epilog_chapter1
 
 label epilog_chapter1:
-    scene black
+    scene bg black
     with fade
     # play sound "audio/paper.mp4" noloop
 
-    scene Letter
-    with fade
-    ""
+    pause(1.0)
+    show letter
+    pause(2.0)
     "Letter from Natsu - 1 (unlocked)"
 
-    show add Solid(black)
     '''
     Dear Haru,
 
@@ -181,32 +264,64 @@ label epilog_chapter1:
     
     — Natsu
     '''
-
-    show black
-    with dissolve
+    scene bg black
+    with fade
+    pause(2.0)
 
     jump chapter2
 
 label chapter2:
     scene bg grassland
-    show natsu ghost smile at right
+    with fade
+    show natsu ghost smile at left
+    with dissolve
     "(Soft blue-grey rain, petals clinging to the wet pavement. A ghost of a boy smiles faintly in the distance.)"
     
-    hide natsu
-    show haru at left
-    haru "April came like a soft breath over the hills."
-    haru "The rain bloomed every flower, every wound."
-    haru "I was discharged from the hospital the day the cherry blossoms began to fall."
-    haru "They told me to rest. To heal."
-    haru "But how could I? When the moment I stepped outside—"
-    haru " "
-    haru "There he was."
-    haru "Natsu."
+    hide natsu ghost smile
+    with dissolve
 
-    show natsu at right
+    show haru sad 
+    with dissolve
+    show haru sad frown 
+    haru "April came like a soft breath over the hills."
+    show haru sad 
+    show haru sad frown 
+    haru "The rain bloomed every flower, every wound."
+    show haru sad 
+    show haru sad frown 
+    haru "I was discharged from the hospital the day the cherry blossoms began to fall."
+    show haru sad 
+    show haru sad frown 
+    haru "They told me to rest. To heal."
+    show haru sad 
+    show haru sad frown 
+    haru "But how could I? When the moment I stepped outside—"
+    show haru sad 
+    show haru sad smile 
+    show haru sad tear
+    pause (2.0)
+    show haru sad tear
+    show haru sad smile 
+    haru "There he was."
+    show haru sad tear
+    show haru sad smile 
+    haru "Natsu."
+    show haru sad tear
+
+    show natsu ghost smile at left
+    show haru smile
+    show haru smile talk 
     haru "Standing on the sidewalk, the hospital bracelet still around his wrist, smiling like he hadn't just died."
+    show haru sad 
+    show haru smile tear
+    show haru smile sad
     haru "I should have screamed. I should have cried."
+    show haru smile tear
+    show haru smile sad
     haru "But instead, my heart said:\n\n\"There you are\""
+    show haru smile tear
+    show haru sad tear
+    show haru sad cry
 
     scene bg bedroom rainy
     # play music "audio/rain.mp4" loop
