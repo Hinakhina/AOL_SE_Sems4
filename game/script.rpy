@@ -71,7 +71,7 @@ label chapter1:
 label choice_c1_1:
     show haru sad
     pause(1.0)
-    show haru sad talk
+    show haru frown
     haru "I\'m fine. Just... the flowers are pretty, that\'s all."
     show haru sad
     pause(1.0)
@@ -86,7 +86,7 @@ label choice_c1_1:
 label choice_c1_2:
     show haru sad
     pause(1.0)
-    show haru sad talk
+    show haru frown
     haru "I didn\'t know how to respond. His voice felt like sunlight on a rainy day."
     show haru sad 
     pause(1.0)
@@ -101,7 +101,7 @@ label choice_c1_2:
 label choice_c1_3:
     show haru sad 
     pause(1.0)
-    show haru sad talk
+    show haru frown
     haru "Not really. Being here again... it just sucks."
     show haru sad 
     pause(1.0)
@@ -143,7 +143,7 @@ label continue_c1:
     pause(1.0)
     show haru frown
     pause(2.0)
-    show haru sad talk
+    show haru frown
     haru "I\'ll miss borrowing your books to read your notes in the margins. The closest I came to reading your mind."
     show haru smile
     pause(2.0)

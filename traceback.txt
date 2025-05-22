@@ -1,15 +1,15 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 74, in script
-    show haru sad talk
-Exception: Image 'haru sad' does not accept attributes 'talk'.
+  File "game/script.rpy", line 231, in script
+    show haru smile tear at right
+Exception: Image 'haru smile' does not accept attributes 'tear'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 74, in script
-    show haru sad talk
+  File "game/script.rpy", line 231, in script
+    show haru smile tear at right
   File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 1124, in execute
     show_imspec(self.imspec, atl=getattr(self, "atl", None))
   File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 1087, in show_imspec
@@ -22,9 +22,9 @@ Full traceback:
     args.extraneous()
   File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\displayable.py", line 109, in extraneous
     raise Exception("Image '{}' does not accept attributes '{}'.".format(
-Exception: Image 'haru sad' does not accept attributes 'talk'.
+Exception: Image 'haru smile' does not accept attributes 'tear'.
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 MentalHealthVN 1.0
-Thu May 22 12:54:51 2025
+Thu May 22 12:58:34 2025
