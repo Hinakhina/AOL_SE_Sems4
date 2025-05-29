@@ -2,18 +2,35 @@
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
+define aright = Position(xalign=0.2)
+define aleft = Position(xalign=0.8)
 
 define haru = Character("Haru")
 define natsu = Character("Natsu")
-define pov = Character("[povname]")
+define psychologist = Character("Psychologist")
+define mom = Character("Mom")
 
+define nar_nvl = nvl_narrator
 
 # The game starts here.
+image splash = "presplash.png"
+
+label splashscreen:
+    scene black
+    with Pause(1)
+
+    show splash with dissolve
+    with Pause(3)
+
+    scene black with dissolve
+    with Pause(1)
+
+    return
 
 label start:
     scene bg loading
     with fade
-    pause(3.0)
+    pause(2.0)
 
     scene bg black 
     with fade
@@ -250,20 +267,23 @@ label epilog_chapter1:
     pause(1.0)
     show letter
     pause(2.0)
-    "Letter from Natsu - 1 (unlocked)"
+    nar_nvl "{i}{b}Letter from Natsu - 1 (unlocked){/b}{/i}"
 
+    nar_nvl "Dear Haru,"
+
+    nar_nvl '''    
+        \n    I never believed in miracles until you sat next to me.\n    
+        You made my small world a little bigger, a little brighter.\n    
+        Even if I'm not there anymore,\n    
+        even if my name fades from the hospital logs and my room gets cleaned out —\n    
+        know that you stitched something permanent into me.\n    
+        Our friendship must always remain the one deathless thing in our lives.\n    
+        Thank you for being my March flower.\n    
+        My blue spring ride.\n    
     '''
-    Dear Haru,
-
-        I never believed in miracles until you sat next to me.
-        You made my small world a little bigger, a little brighter.
-        Even if I'm not there anymore, even if my name fades from the hospital logs and my room gets cleaned out —
-        know that you stitched something permanent into me.
-        Our friendship must always remain the one deathless thing in our lives.
-        Thank you for being my March flower. My blue spring ride.
     
-    — Natsu
-    '''
+    nar_nvl "— Natsu"
+    
     scene bg black
     with fade
     pause(2.0)
@@ -271,9 +291,10 @@ label epilog_chapter1:
     jump chapter2
 
 label chapter2:
-    scene bg grassland
+    scene bg park night
     with fade
-    show natsu ghost smile at left
+    show natsu ghost smile at left:
+        alpha 0.8
     with dissolve
     "(Soft blue-grey rain, petals clinging to the wet pavement. A ghost of a boy smiles faintly in the distance.)"
     
@@ -325,13 +346,25 @@ label chapter2:
 
     scene bg bedroom rainy
     # play music "audio/rain.mp4" loop
-    show haru at right
+    show haru school sad at right
+    show haru school sad frown at right
     haru "I sat at my desk, trying to finish my homework."
+    show haru school sad at right
+    show haru school sad frown at right
     haru "Outside, the rain painted the glass silver."
+    show haru school sad at right
+    show haru school sad frown at right
     haru "Inside, he sat cross-legged on my bed, humming an off-key song, like it was the most natural thing in the world."
+    show haru school sad at right
+    show haru school smile at right
 
-    show natsu at left
+    show natsu ghost smile at left:
+        alpha 0.8
+    with dissolve
+    show haru school smile at right
+    show haru school smile talk at right
     haru "I can\'t touch him, but he is there. Even so, I don\'t mind it."
+    show haru school smile at right
 
     menu:
         "{i}{b}(Reach out your hand quietly){/b}{/i}":
@@ -343,8 +376,13 @@ label chapter2:
 
 label continue_c2:
     hide natsu
+    show haru smile
+    show haru smile talk
     haru "\"Natsu, Natsu!\""
+    show haru smile
+    show haru smile talk
     haru "I say your name all the time when you're not around, just to put more of you in the world."
+    show haru smile
 
     show natsu ghost sorry
     with dissolve

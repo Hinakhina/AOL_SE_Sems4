@@ -135,7 +135,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    background Image("gui/textbox.png", xalign=0.5, yalign=-0.15)
 
 style namebox:
     xpos gui.name_xpos
@@ -150,6 +150,7 @@ style namebox:
 style say_label:
     properties gui.text_properties("name", accent=True)
     xalign gui.name_xalign
+    size 40
     yalign 0.5
 
 style say_dialogue:
@@ -287,10 +288,15 @@ style quick_button_text:
 screen navigation():
 
     vbox:
-        style_prefix "navigation"
 
-        xpos gui.navigation_xpos
+        if main_menu:
+            style_prefix "mainmenu"
+            xalign 0.95
+        else:
+            style_prefix "navigation"
+            xpos gui.navigation_xpos
         yalign 0.5
+
 
         spacing gui.navigation_spacing
 
@@ -333,12 +339,27 @@ screen navigation():
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
 
+style mainmenu_button is gui_button
+style mainmenu_button_text is gui_button_text
+
 style navigation_button:
     size_group "navigation"
     properties gui.button_properties("navigation_button")
+    # xalign 1.0
 
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
+    idle_color "#707070"
+    # xalign 0.0
+
+style mainmenu_button:
+    size_group "navigation"
+    properties gui.button_properties("navigation_button")
+    # xalign 1.0
+
+style mainmenu_button_text:
+    properties gui.text_properties("navigation_button")
+    # xalign 0.0
 
 
 ## Main Menu screen ############################################################
@@ -384,7 +405,7 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    # background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -1196,6 +1217,7 @@ style confirm_button:
 
 style confirm_button_text:
     properties gui.text_properties("confirm_button")
+    idle_color "#707070"
 
 
 ## Skip indicator screen #######################################################

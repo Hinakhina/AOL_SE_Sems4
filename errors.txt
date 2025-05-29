@@ -2,17 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 407: expected statement.
-    add Solid(black)
-             ^
-
-File "game/script.rpy", line 451: end of line expected.
-    jump to good_ending_c3_p4
-            ^
-
-File "game/script.rpy", line 467: end of line expected.
-    jump to bad_ending_c3_part4
-            ^
+File "game/screens.rpy", line 134: expected 'simple_expression' not found.
+    xfill 
+          ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Thu May 22 01:47:47 2025
+Thu May 29 21:04:30 2025
