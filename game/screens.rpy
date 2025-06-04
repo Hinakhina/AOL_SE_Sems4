@@ -128,6 +128,11 @@ style say_thought is say_dialogue
 style namebox is default
 style namebox_label is say_label
 
+image textbox:
+    "gui/textbox.png"
+    alpha 0.5
+    xalign 0.5
+    yalign -0.1
 
 style window:
     xalign 0.5
@@ -135,7 +140,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=-0.15)
+    background Transform(im.Alpha("gui/textbox.png", 0.8), xalign=0.5, yalign=-0.15)
 
 style namebox:
     xpos gui.name_xpos
@@ -152,6 +157,7 @@ style say_label:
     xalign gui.name_xalign
     size 40
     yalign 0.5
+    
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
@@ -236,6 +242,10 @@ style choice_button_text is default:
 ## The quick menu is displayed in-game to provide easy access to the out-of-game
 ## menus.
 
+transform quick_button_size:
+    yzoom 0.6
+    xzoom 0.6
+
 screen quick_menu():
 
     ## Ensure this appears on top of other screens.
@@ -244,19 +254,63 @@ screen quick_menu():
     if quick_menu:
 
         hbox:
+            spacing 20
+            yoffset -60
             style_prefix "quick"
 
-            xalign 0.5
+            xalign 0.85
             yalign 1.0
 
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            # textbutton _("  Back  ") action Rollback()
+            imagebutton:
+                auto "gui/button/back_%s.png"
+                action Rollback()
+                at quick_button_size
+            
+            # textbutton _(" History") action ShowMenu('history')
+            imagebutton:
+                auto "gui/button/history_%s.png"
+                action ShowMenu('history')
+                at quick_button_size
+                
+            # textbutton _("  Skip  ") action Skip() alternate Skip(fast=True, confirm=True)
+            imagebutton:
+                auto "gui/button/skip_%s.png"
+                action Skip() alternate Skip(fast=True, confirm=True)
+                at quick_button_size
+
+            # textbutton _("  Auto  ") action Preference("auto-forward", "toggle")
+            imagebutton:
+                auto "gui/button/auto_%s.png"
+                action Preference("auto-forward", "toggle")
+                at quick_button_size
+            
+            
+            # textbutton _("  Save  ") action ShowMenu('save')
+            imagebutton:
+                auto "gui/button/save_%s.png"
+                action ShowMenu('save')
+                at quick_button_size
+                
+
+            # textbutton _(" Q.Save ") action QuickSave()
+            imagebutton:
+                auto "gui/button/qsave_%s.png"
+                action QuickSave()
+                at quick_button_size
+                
+
+            # textbutton _(" Q.Load ") action QuickLoad()
+            imagebutton:
+                auto "gui/button/qload_%s.png"
+                action QuickLoad()
+                at quick_button_size
+
+            # textbutton _(" Prefs ") action ShowMenu('preferences')
+            imagebutton:
+                auto "gui/button/prefs_%s.png"
+                action ShowMenu('preferences')
+                at quick_button_size
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -271,6 +325,8 @@ style quick_button_text is button_text
 
 style quick_button:
     properties gui.button_properties("quick_button")
+    # background Transform("gui/savebutto.png", xsize=120, ysize=40, xalign = 0.5)
+    
 
 style quick_button_text:
     properties gui.text_properties("quick_button")
