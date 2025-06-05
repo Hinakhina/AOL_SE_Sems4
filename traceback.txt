@@ -1,40 +1,84 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-Compiling ATL code at game/script.rpy:273
-  File "game/script.rpy", line 268, in script
-    show letter:
-Exception: Not a displayable: <partial <function OldMoveTransition at 0x00000000039680d0> (0.5,) {'enter_factory': <partial <function ZoomInOut at 0x0000000003961f70> (0.01, 1.0) {}>}>
+While running game code:
+  File "game/screens.rpy", line 434, in execute
+    screen main_menu():
+  File "game/screens.rpy", line 434, in execute
+    screen main_menu():
+  File "game/screens.rpy", line 449, in execute
+    use navigation
+  File "game/screens.rpy", line 349, in execute
+    screen navigation():
+  File "game/screens.rpy", line 349, in execute
+    screen navigation():
+  File "game/screens.rpy", line 351, in execute
+    vbox:
+  File "game/screens.rpy", line 351, in keywords
+    vbox:
+  File "game/screens.rpy", line 355, in keywords
+    if main_menu and in_main_menu_home():
+  File "game/screens.rpy", line 355, in <module>
+    if main_menu and in_main_menu_home():
+  File "game/screens.rpy", line 10, in in_main_menu_home
+    screens = renpy.get_screen_stack()
+AttributeError: module 'renpy.exports' has no attribute 'get_screen_stack'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 268, in script
-    show letter:
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 1124, in execute
-    show_imspec(self.imspec, atl=getattr(self, "atl", None))
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 1087, in show_imspec
-    renpy.config.show(name,
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\exports\displayexports.py", line 503, in show
-    sls.add(layer, img, key, zorder, behind, at_list=at_list, name=name, atl=atl, default_transform=default_transform, transient=transient)
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\scenelists.py", line 477, in add
-    thing.visit_all(lambda d : None)
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\displayable.py", line 424, in visit_all
-    for d in self.visit():
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\atl.py", line 816, in visit
-    block = self.compile()
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\atl.py", line 723, in compile
-    block = self.atl.compile(self.context)
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\atl.py", line 925, in compile
-    statements = [ i.compile(ctx) for i in self.statements ]
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\atl.py", line 925, in <listcomp>
-    statements = [ i.compile(ctx) for i in self.statements ]
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\atl.py", line 1241, in compile
-    child = renpy.easy.displayable(child)
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\easy.py", line 145, in displayable
-    raise Exception("Not a displayable: %r" % (d,))
-Exception: Not a displayable: <partial <function OldMoveTransition at 0x00000000039680d0> (0.5,) {'enter_factory': <partial <function ZoomInOut at 0x0000000003961f70> (0.01, 1.0) {}>}>
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
+    python hide:
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
+    python hide:
+  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
+    ui.interact()
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ui.py", line 301, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\core.py", line 2218, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\core.py", line 2748, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\screen.py", line 480, in visit_all
+    callback(self)
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\core.py", line 2748, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\screen.py", line 491, in per_interact
+    self.update()
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\display\screen.py", line 700, in update
+    self.screen.function(**self.scope)
+  File "game/screens.rpy", line 434, in execute
+    screen main_menu():
+  File "game/screens.rpy", line 434, in execute
+    screen main_menu():
+  File "game/screens.rpy", line 449, in execute
+    use navigation
+  File "game/screens.rpy", line 349, in execute
+    screen navigation():
+  File "game/screens.rpy", line 349, in execute
+    screen navigation():
+  File "game/screens.rpy", line 351, in execute
+    vbox:
+  File "game/screens.rpy", line 351, in keywords
+    vbox:
+  File "game/screens.rpy", line 355, in keywords
+    if main_menu and in_main_menu_home():
+  File "game/screens.rpy", line 355, in <module>
+    if main_menu and in_main_menu_home():
+  File "game/screens.rpy", line 10, in in_main_menu_home
+    screens = renpy.get_screen_stack()
+AttributeError: module 'renpy.exports' has no attribute 'get_screen_stack'
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 MentalHealthVN 1.0
-Thu Jun  5 01:29:20 2025
+Thu Jun  5 10:54:48 2025

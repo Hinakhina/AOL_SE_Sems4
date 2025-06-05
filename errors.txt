@@ -2,13 +2,138 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 403: show statement expects a non-empty block.
-    show natsu ghost smile at aleft:
-                                    ^
+File "game/screens.rpy", line 348: end of line expected.
+(Perhaps you left out a " at the end of the first line.)
+    if renpy.get_screen("main_menu"):":
+                                     ^
+                style_prefix "mainmenu"
+                xalign 0.95
+            else:
+                style_prefix "navigation"
+                xpos gui.navigation_xpos
+            yalign 0.5
+    
+    
+            spacing gui.navigation_spacing
+    
+            if main_menu:
+    
+                textbutton _("Start") action Start()
+    
+            else:
+    
+                textbutton _("History") action ShowMenu("history")
+    
+                textbutton _("Save") action ShowMenu("save")
+    
+            textbutton _("Load") action ShowMenu("load")
+    
+            textbutton _("Preferences") action ShowMenu("preferences")
+    
+            if _in_replay:
+    
+                textbutton _("End Replay") action EndReplay(confirm=True)
+    
+            elif not main_menu:
+    
+                textbutton _("Main Menu") action MainMenu()
+    
+            textbutton _("About") action ShowMenu("about")
+    
+            if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+    
+                ## Help isn't necessary or relevant to mobile devices.
+                textbutton _("Help") action ShowMenu("help")
+    
+            if renpy.variant("pc"):
+    
+                ## The quit button is banned on iOS and unnecessary on Android and
+                ## Web.
+                textbutton _("Quit") action Quit(confirm=not main_menu)
+    
+    
+    style navigation_button is gui_button
+    style navigation_button_text is gui_button_text
+    
+    style mainmenu_button is gui_button
+    style mainmenu_button_text is gui_button_text
+    
+    style navigation_button:
+        size_group "navigation"
+        properties gui.button_properties("navigation_button")
+        # xalign 1.0
+    
+    style navigation_button_text:
+        properties gui.text_properties("navigation_button")
+        idle_color "
 
-File "game/script.rpy", line 406: show statement expects a non-empty block.
-    show natsu ghost smile at aleft:
-                                    ^
+File "game/screens.rpy", line 496: end of line expected.
+(Perhaps you left out a " at the end of the first line.)
+    if renpy.get_screen("main_menu"):"
+                                     ^
+            add gui.main_menu_background
+        else:
+            add gui.game_menu_background
+    
+        frame:
+            style "game_menu_outer_frame"
+    
+            hbox:
+    
+                ## Reserve space for the navigation section.
+                frame:
+                    style "game_menu_navigation_frame"
+    
+                frame:
+                    style "game_menu_content_frame"
+    
+                    if scroll == "viewport":
+    
+                        viewport:
+                            yinitial yinitial
+                            scrollbars "vertical"
+                            mousewheel True
+                            draggable True
+                            pagekeys True
+    
+                            side_yfill True
+    
+                            vbox:
+                                spacing spacing
+    
+                                transclude
+    
+                    elif scroll == "vpgrid":
+    
+                        vpgrid:
+                            cols 1
+                            yinitial yinitial
+    
+                            scrollbars "vertical"
+                            mousewheel True
+                            draggable True
+                            pagekeys True
+    
+                            side_yfill True
+    
+                            spacing spacing
+    
+                            transclude
+    
+                    else:
+    
+                        transclude
+    
+        use navigation
+    
+        textbutton _("Return"):
+            style "return_button"
+    
+            action Return()
+    
+        label title
+    
+        if renpy.get_screen("main_menu"):":
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Thu Jun  5 03:12:15 2025
+Thu Jun  5 11:05:25 2025

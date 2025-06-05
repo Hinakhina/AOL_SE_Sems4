@@ -30,7 +30,7 @@ label splashscreen:
 label start:
     scene bg loading
     with fade
-    pause(2.0)
+    pause(1.0)
 
     scene bg black 
     with fade
@@ -62,7 +62,7 @@ label chapter1:
     pause(1.0)
     show haru frown
     haru "Maybe because loneliness always adds its own weight."
-    show haru sad
+    show haru sad at aleft
     pause(2.0)
 
     # play sound "audio/steps.mp3" noloop fadein 1.0 
@@ -158,9 +158,9 @@ label continue_c1:
     natsu "What would you miss the most about me?"
     show natsu hospital smile at aright
     pause(1.0)
-    show haru frown
+    show haru frown at aleft
     pause(2.0)
-    show haru frown
+    show haru frown at aleft
     haru "I\'ll miss borrowing your books to read your notes in the margins. The closest I came to reading your mind."
     show haru smile
     pause(2.0)

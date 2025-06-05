@@ -226,7 +226,7 @@ style choice_button_text is button_text
 style choice_vbox:
     xalign 0.5
     ypos 405
-    yanchor 0.5
+    yanchor -1.0
 
     spacing gui.choice_spacing
 
@@ -345,7 +345,7 @@ screen navigation():
 
     vbox:
 
-        if main_menu:
+        if renpy.get_screen("main_menu"):
             style_prefix "mainmenu"
             xalign 0.95
         else:
@@ -369,6 +369,9 @@ screen navigation():
         textbutton _("Load") action ShowMenu("load")
 
         textbutton _("Preferences") action ShowMenu("preferences")
+
+        if main_menu:
+            textbutton _("Album") action ShowMenu("album")
 
         if _in_replay:
 
@@ -493,7 +496,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     style_prefix "game_menu"
 
-    if main_menu:
+    if renpy.get_screen("main_menu"):
         add gui.main_menu_background
     else:
         add gui.game_menu_background
@@ -788,6 +791,7 @@ style page_button:
 
 style page_button_text:
     properties gui.text_properties("page_button")
+    idle_color '#404040'
 
 style slot_button:
     properties gui.button_properties("slot_button")
@@ -919,6 +923,7 @@ style pref_label_text:
 
 style pref_vbox:
     xsize 338
+    xalign 0.0
 
 style radio_vbox:
     spacing gui.pref_button_spacing
@@ -929,6 +934,7 @@ style radio_button:
 
 style radio_button_text:
     properties gui.text_properties("radio_button")
+    idle_color '#404040'
 
 style check_vbox:
     spacing gui.pref_button_spacing
@@ -939,6 +945,7 @@ style check_button:
 
 style check_button_text:
     properties gui.text_properties("check_button")
+    idle_color '#404040'
 
 style slider_slider:
     xsize 525
