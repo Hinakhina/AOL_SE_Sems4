@@ -1,5 +1,12 @@
 ﻿# The script of the game goes in this file.
 
+image CG_playing_card = "images/CGs/playing_card.PNG"
+image CG_spending_time = "images/CGs/spending_time.PNG"
+image CG_park_night = "images/CGs/park_night.PNG"
+image CG_leaning_desk = "images/CGs/leaning_desk.png"
+image CG_good_ending = "images/CGs/good_ending.jpg"
+image CG_bad_ending = "images/CGs/bad_ending.jpg"
+
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 define aright = Position(xalign=0.6)
@@ -62,17 +69,21 @@ label chapter1:
     pause(1.0)
     show haru frown
     haru "Maybe because loneliness always adds its own weight."
+    
     show haru sad at aleft
-    pause(2.0)
+    with MoveTransition(0.5, enter_time_warp=_warper.easein)
+    pause(1.0)
 
     # play sound "audio/steps.mp3" noloop fadein 1.0 
     
     show natsu hospital smile at aright
     with MoveTransition(1.0, enter=offscreenright, enter_time_warp=_warper.easein)
+    stop sound
+
     pause(1.0)
-    show natsu hospital talk at aright
+    show natsu hospital talk 
     natsu "Hey. You look like you\'re about to cry. Are you okay?"
-    show natsu hospital smile at aright
+    show natsu hospital smile 
 
     menu:
         "{i}{b}(Smile awkwardly){/b}{/i}":
@@ -92,11 +103,11 @@ label choice_c1_1:
     haru "I\'m fine. Just... the flowers are pretty, that\'s all."
     show haru sad
     pause(1.0)
-    show natsu hospital smile at aright
+    show natsu hospital smile 
     pause(1.0)
-    show natsu hospital talk at aright
+    show natsu hospital talk 
     natsu "They\'re alright, I guess. But they\'re not nearly as interesting as you."
-    show natsu hospital smile at aright
+    show natsu hospital smile 
     pause(1.0)
     jump continue_c1
 
@@ -107,11 +118,11 @@ label choice_c1_2:
     haru "I didn\'t know how to respond. His voice felt like sunlight on a rainy day."
     show haru sad 
     pause(1.0)
-    show natsu hospital smile at aright
+    show natsu hospital smile 
     pause(1.0)
-    show natsu hospital talk at aright
+    show natsu hospital talk 
     natsu "Don\'t worry. I get it. Hospitals aren\'t exactly happy places."
-    show natsu hospital smile at aright
+    show natsu hospital smile 
     pause(1.0)
     jump continue_c1   
 
@@ -122,11 +133,11 @@ label choice_c1_3:
     haru "Not really. Being here again... it just sucks."
     show haru sad 
     pause(1.0)
-    show natsu hospital smile at aright
+    show natsu hospital smile 
     pause(1.0)
-    show natsu hospital talk at aright
+    show natsu hospital talk 
     natsu "Yeah. Been there. Actually... still here."
-    show natsu hospital smile at aright
+    show natsu hospital smile 
     pause(1.0)
     jump continue_c1   
 
@@ -143,7 +154,7 @@ label continue_c1:
     haru "That\'s how I met Natsu. A boy who lived more in hospital rooms than anywhere else. But he smiled like someone who had the whole world tucked into his pocket."
     show haru smile
 
-    scene bg playing card
+    scene CG_playing_card
     with fade 
     "{b}(Days pass. Quick montage of Haru and Natsu playing cards, talking in the garden, laughing.){/b}"
     haru "We became best friends faster than spring melted into summer."
@@ -153,17 +164,17 @@ label continue_c1:
     with fade
     show natsu hospital smile at aright
     with dissolve
-    pause(1.0)
-    show natsu hospital talk at aright 
+    pause(0.5)
+    show natsu hospital talk 
     natsu "What would you miss the most about me?"
-    show natsu hospital smile at aright
-    pause(1.0)
+    show natsu hospital smile 
+    pause(0.5)
     show haru frown at aleft
-    pause(2.0)
+    pause(0.5)
     show haru frown at aleft
     haru "I\'ll miss borrowing your books to read your notes in the margins. The closest I came to reading your mind."
     show haru smile
-    pause(2.0)
+    pause(1.0)
 
     scene bg hospital room night 
     with fade 
@@ -173,48 +184,56 @@ label continue_c1:
     show natsu hospital talk
     natsu "But how can you love a person who is not whole?"
     show natsu hospital smile
-    pause(1.0)
 
     menu:
         "Who says you\'re not whole?":
-            show natsu hospital smile
-            pause(1.0)
+            show natsu hospital smile at aleft
+            with fade
+            pause(0.5)
             show haru smile at aright
-            pause(1.0)
-            show haru smile talk at aright
+            with dissolve
+            pause(0.5)
+            show haru smile talk 
             haru "Who says you\'re not whole? Just because you\'re different doesn\'t mean you're incomplete."
-            show haru smile at aright
-            pause(1.0)
+            show haru smile
+            pause(0.5)
             show natsu hospital talk
             natsu "You\'re strange, you know that?"
             show natsu hospital smile
             pause(1.0)
         "Because even broken things are beautiful.":
-            show natsu hospital smile
-            pause(1.0)
+            show natsu hospital smile at aleft
+            with fade
+            pause(0.5)
             show haru smile at aright
+            with dissolve
             pause(1.0)
-            show haru smile talk at aright
+            show haru smile talk 
             haru "Because you, like the moon, are not only beautiful when full. In all of your phases and fractions and ivory-white pieces, I love you."
-            show haru smile at aright
-            pause(1.0)
+            show haru smile 
+            pause(0.5)
             show natsu hospital smile
-            pause(2.0)
+            pause(1.0)
             show natsu hospital talk
             natsu  "You\'re really something else."
             show natsu hospital smile
             pause(1.0)
         "{i}{b}(Stay silent, but reach for his hand.){/b}{/i}":
-            show haru smile at aright
+            show natsu hospital smile at aleft
+            with fade
+            pause(0.5)
+            show haru smile at center
+            with MoveTransition(1.0, enter_time_warp=_warper.easein)
+            haru "..."
             "{i}(Natsu looks surprised but squeezes Haru\'s hand tightly.){/i}"
             show natsu hospital smile
-            pause(1.0)
+            pause(0.5)
             show natsu hospital talk
             natsu "{i}Thanks... Haru{/i}"
             show natsu hospital smile
-            pause(1.0)
+            pause(0.5)
     
-    scene bg spending time
+    scene CG_spending_time
     with fade
     "{b}(April){/b}"
 
@@ -248,13 +267,13 @@ label continue_c1:
     show haru smile tear at aright
     with dissolve
     pause(2.0)
-    show haru smile sad at aright
+    show haru smile sad 
     haru "I came to the garden today. Alone."
-    show haru smile tear at aright
+    show haru smile tear
     pause(1.0)
-    show haru smile sad at aright
+    show haru smile sad 
     haru "The flowers were still blooming. But it felt like the whole world forgot how to be colorful."
-    show haru smile tear at aright
+    show haru smile tear 
     pause(2.0)
 
     jump epilog_chapter1
@@ -268,14 +287,15 @@ label epilog_chapter1:
     show letter:
         xalign 0.5
         yalign 0.5
-        xzoom 1.3
-        yzoom 1.3
+        xzoom 1.4
+        yzoom 1.4
     with dissolve
     pause(2.0)
+    nar_nvl ""
 
-    nar_nvl "{i}{b}\nLetter from Natsu - 1 (unlocked){/b}{/i}"
+    nar_nvl "{i}{b}\n\n\nLetter from Natsu - 1 (unlocked){/b}{/i}"
 
-    nar_nvl "\n\nDear Haru,"
+    nar_nvl "\nDear Haru,"
 
     nar_nvl """    
         \n I never believed in miracles until you sat next to me.\n    
@@ -296,20 +316,25 @@ label epilog_chapter1:
     with fade
     pause(2.0)
 
+    nvl clear
+
+    $ renpy.end_replay()
+
     jump chapter2
 
+
 label chapter2:
-    scene bg park night
+    scene CG_park_night
     with fade
-    show natsu ghost smile at aleft:
-        alpha 0.8
-    with dissolve
+    # show natsu ghost smile at aleft:
+    #     alpha 0.8
+    # with dissolve
     "{i}(Soft blue-grey rain, petals clinging to the wet pavement. A ghost of a boy smiles faintly in the distance.){/i}"
     
-    hide natsu
-    with dissolve
+    # hide natsu
+    # with dissolve
 
-    show haru sad 
+    show haru sad at aright
     with dissolve
     show haru sad frown 
     haru "April came like a soft breath over the hills."
@@ -337,9 +362,9 @@ label chapter2:
     haru "Natsu."
     show haru sad tear
 
-    show natsu ghost smile at aleft:
-        alpha 0.8
-    with dissolve
+    # show natsu ghost smile at right:
+    #     alpha 0.8
+    # with dissolve
     show haru smile
     show haru smile talk 
     haru "Standing on the sidewalk, the hospital bracelet still around his wrist, smiling like he hadn't just died."
@@ -355,96 +380,145 @@ label chapter2:
     show haru sad cry
 
     scene bg bedroom rainy
+    with fade
     # play music "audio/rain.mp4" loop
     show haru school sad at aright
-    show haru school sad frown at aright
+    pause (1.0)
+    show haru school sad frown 
     haru "I sat at my desk, trying to finish my homework."
-    show haru school sad at aright
-    show haru school sad frown at aright
+    show haru school sad 
+    pause (0.5)
+    show haru school sad frown 
     haru "Outside, the rain painted the glass silver."
-    show haru school sad at aright
-    show haru school sad frown at aright
+    show haru school sad 
+    pause (0.5)
+    show haru school sad frown 
     haru "Inside, he sat cross-legged on my bed, humming an off-key song, like it was the most natural thing in the world."
-    show haru school sad at aright
-    show haru school smile at aright
+    show haru school sad
+    pause (1.0)
+    show haru school smile  at aright
+    pause (1.0)
 
     show natsu ghost smile at aleft:
         alpha 0.8
     with dissolve
+    pause (1.0)
 
-    show haru school smile at aright
-    show haru school smile talk at aright
+    show haru school smile talk 
     haru "I can\'t touch him, but he is there. Even so, I don\'t mind it."
-    show haru school smile at aright
-
+    show haru school smile
     menu:
         "{i}{b}(Reach out your hand quietly){/b}{/i}":
+            show haru school smile at center
+            with MoveTransition(1.0, enter_time_warp=_warper.easein)
+            haru "..."
+            pause(2.0)
             jump continue_c2
         "{i}{b}(Smile at him without a word){/b}{/i}":
+            show haru smile talk
+            haru "..."
+            pause(2.0)
             jump continue_c2
         "{i}{b}(Whisper his name, just once){/b}{/i}":
+            haru "Natsu..."
+            pause(2.0)
             jump continue_c2
 
 label continue_c2:
+    scene bg park
+    with fade
+    "{i}Day by day passed{/i}"
+
+    scene bg bedroom rainy
+    with fade
+    pause (2.0)
+
     show haru smile at aright
+    with dissolve
+    pause (0.5)
     show natsu ghost smile at aleft
+    with dissolve
+    pause (0.5)
     show haru smile talk
     haru "\"Natsu, Natsu!\""
+    show haru smile
     pause(2.0)
     hide natsu
     with dissolve
-    show haru smile
-    show haru smile talk
+    pause (0.5)
+    hide haru with dissolve
+    show haru smile talk at aleft
+    with dissolve
     haru "I say your name all the time when you're not around, just to put more of you in the world."
     show haru smile
+    pause (0.5)
 
-    show natsu ghost smile at aleft:
+    show natsu ghost smile at aright:
         alpha 0.8
     with dissolve
+    pause (1.0)
 
-    show natsu ghost talk at aleft
+    show natsu ghost talk 
     natsu "You care for me, I feel it like an ax in my chest."
-    show natsu ghost smile at aleft
-    show natsu ghost talk at aleft
+    show natsu ghost smile 
+    pause (0.5)
+    show natsu ghost talk 
     natsu "I didn't mean to stay like this…"
-    show natsu ghost smile at aleft
+    show natsu ghost smile 
+    pause (1.0)
 
     hide natsu
-    show haru sad
+    with dissolve
+    hide haru with fade
+    pause (0.5)
+
+    show haru sad at center
+    with dissolve
+    pause (1.0)
+
     show haru frown
     haru "My first feeling about the rain was that it was like you."
     show haru sad
+    pause (0.5)
     show haru frown
     haru "Gentle. Endless. Impossible to hold."
     show haru sad
-    show haru frown
-    haru " "
-    show haru sad
+    pause (0.5)
+    haru "..."
+    pause (0.5)
     show haru frown
     haru "I miss you more than words can express."
     show haru sad
+    pause (0.5)
 
-    scene bg grassland 
+    scene bg park 
     with fade 
     show haru sad at aleft
-    show haru frown at aleft
+    pause (0.5)
+    show haru frown 
     haru "Some days, I would see him in the crowd at school."
-    show haru sad at aleft
-    show haru frown at aleft
+    show haru sad 
+    pause (0.5)
+    show haru frown 
     haru "Some nights, he would curl up by my window like a stray cat."
-    show haru sad at aleft
-    show haru frown at aleft
+    show haru sad 
+    pause (0.5)
+    show haru frown 
     haru "No one else saw him."
-    show haru sad at aleft
-    show haru frown at aleft
+    show haru sad
+    pause (0.5) 
+    show haru frown 
     haru "Maybe he wasn\'t real."
-    show haru sad at aleft
-    show haru frown at aleft
+    show haru sad 
+    pause (0.5)
+    show haru frown 
     haru "Maybe I didn\'t care."
-    show haru sad at aleft
-    show haru frown at aleft
+    show haru sad
+    pause (0.5) 
+    show haru frown 
     haru "Because he smiled. And talked. And stayed."
-    show haru smile sad at aleft
+    show haru smile sad
+    pause (1.5)
 
 
     jump epilog_chapter2
@@ -457,20 +531,25 @@ label epilog_chapter2:
 
     "{b}{i}April showers wash away the footprints, but not the memory.{/i}{/b}"
     
-    # play sound "audio/paper.mp4" noloop
 
     pause(1.0)
+
+    scene bg black with fade 
+    nvl clear
+    # play sound "audio/paper.mp4" noloop
+
     show letter:
         xalign 0.5
         yalign 0.5
-        xzoom 1.3
-        yzoom 1.3
-    with fade
+        xzoom 1.4
+        yzoom 1.4
+    with dissolve
     pause(2.0)
 
-    nar_nvl "{i}{b}\n\nLetter from Natsu - 2 (unlocked){/b}{/i}\n\n"
+    nar_nvl ""
 
-    show add Solid(black)
+    nar_nvl "{i}{b}\n\n\nLetter from Natsu - 2 (unlocked){/b}{/i}\n\n"
+
     nar_nvl """
         Haru,\n\n 
         I want you to know,\n 
@@ -481,9 +560,22 @@ label epilog_chapter2:
         by my side than all the books in the world.\n
     """
 
-    show black
+    scene black
     with dissolve
     pause(0.2)
+
+    nvl clear
+
+    $ renpy.end_replay()
+
+    jump epilog_chapter2_2
+
+    
+
+label epilog_chapter2_2:
+    
+    scene bg black
+    with fade
 
     # play sound "audio/paper.mp4" noloop
 
@@ -491,58 +583,76 @@ label epilog_chapter2:
     show letter:
         xalign 0.5
         yalign 0.5
-        xzoom 1.3
-        yzoom 1.3
-    with fade
+        xzoom 1.4
+        yzoom 1.4
+    with dissolve
     pause(2.0)
 
-    nar_nvl "{i}{b}\n\n\nLetter from Natsu - 2 (unlocked){/b}{/i}\n\n"
+    nar_nvl " "
+
+    nar_nvl "{i}{b}\n\n\n\nLetter from Natsu - 2 (unlocked){/b}{/i}\n\n"
 
     nar_nvl """
-    Haru,\n 
+    Haru,\n\n 
     since meeting you,\n 
     I actually began wishing for more time.\n 
     I want more time with you.\n
     """
 
-    show black
-    with dissolve
+    scene black
+    with fade
     pause(2.0)
+
+    nvl clear
+
+    $ renpy.end_replay()
 
     jump chapter3_part1
 
+
 label chapter3_part1:
+    scene bg black 
+    with fade
     "{b}(Present Day){/b}"
 
     scene bg park
     with fade
 
     show haru sad at aright
-    show haru frown at aright
+    with dissolve
+    pause(0.5)
+    show haru frown 
     haru "First day of June and I miss you more than ever."
-    show haru sad at aright
-
+    show haru sad 
+    pause(0.5)
     hide haru
     "The summer sun felt suffocating, as if it could never truly reach Haru anymore."
     "Everything around her was alive with color, birds chirping, trees swaying, but inside her, it felt like everything had stopped."
 
-    show haru sad at aright
-    show haru frown at aright
+    show haru sad 
+    pause(0.5)
+    show haru frown 
     haru "Your name, Natsu, it means Summer, but where were you? I can't seem to find you. It's summer already."
-    show haru sad at aright
+    show haru sad
+    pause(0.5)
 
-    hide haru 
+    hide haru with dissolve
     "The thought echoed constantly in her mind. He was gone—truly gone."
 
     show haru sad at aright
+    with dissolve
+    pause(0.5)
     show haru frown at aright
     haru "You said you are a ghost now? Haunt me, then!"
     show haru sad at aright
+    pause(0.5)
     show haru frown at aright
     haru "Show up in the wind, be with me always. Only do not leave me in this abyss, where I cannot find you."
     show haru sad at aright
+    pause(0.5)
 
-    hide haru
+    hide haru with fade
+    pause(0.5)
     "She walked through the days mechanically. The laughter of her friends seemed distant, a world apart from the one she now inhabited." 
     "Grief was a constant companion, settling into her bones like a weight she could never escape."
 
@@ -552,28 +662,36 @@ label chapter3_part1:
 
 
     show haru sad at aright
-    show haru frown at aright
+    with dissolve
+    pause(0.5)
+    show haru frown 
     haru "When I am asked how did I develop depression, I talk about the indifference of nature. It was soon after Natsu died, a brilliant April day, everything blooming."
-    show haru sad at aright
+    show haru sad 
+    pause(0.5)
 
-    hide haru
+    hide haru with fade
+    pause(0.5)
     "The days felt like they were on repeat. The same sun, the same sky, the same ache. And yet, it was as if nothing had changed. Not really. Not for her."
 
     show haru sad cry at aright
-    show haru frown cry at aright
+    with dissolve
+    pause(0.5)
+    show haru frown cry 
     haru "If l were fire, I would burn; If l were a woodcutter, I would strike. But I am a heart, and I love, and I grief. Would you come back to me?"
-    show haru sad cry at aright
+    show haru sad cry 
+    pause(0.5)
 
     # play sound "audio/wind.mp4" noloop
 
-    show haru frown cry at aright
+    show haru frown cry 
     haru "When the rush of that wind came, Natsu, it was almost you."
-    show haru sad cry at aright
+    show haru sad cry 
+    pause(0.5)
 
     scene bg kitchen
     with fade
 
-    show haru sad
+    show haru sad with dissolve
     menu:
         "Mom, Dad... I have something to say.":
             show haru sad
@@ -581,20 +699,23 @@ label chapter3_part1:
             show haru frown
             haru "I... I don\'t feel right. I can\'t stop thinking about Natsu. Everything feels so distant. I don\'t know how to live like this anymore."
             show haru sad
-            hide haru
-            show mom silent
+            hide haru with dissolve
+            pause(0.5)
+            show mom silent with dissolve
+            pause(0.5)
             show mom talk
             mom "Thanks for telling us, dear. You don\'t have to go through this alone. Maybe it\'s time to talk to someone who can really help."
             show mom silent
+            pause(1.0)
             jump chapter3_part2
 
         "Mom, Dad... Nevermind.":
             show haru sad
             "{i}The words stayed lodged in her throat, too heavy to lift. She smiled and nodded as her parents spoke, but inside, her heart cracked. She wasn\'t ready to tell them. Maybe they wouldn\'t understand. Or maybe it wouldn\'t matter.{/i}"
-            show haru sad
             show haru frown
             haru "How do we tell the sea that we are drowning on land?" 
             show haru sad
+            pause(0.5)
             show haru frown
             haru "My grief barely literate."
             show haru sad tear
@@ -609,32 +730,37 @@ label chapter3_part2:
     "The silence in her room was deafening. She stared at the walls, the photos on her desk, all the things Natsu had touched." 
     "It was as if her life had stopped moving. The ache inside her chest was relentless, never letting go."
     
-    show haru sad
+    show haru sad at center 
+    with dissolve
+    pause(0.5)
     show haru sad tear
+    pause(1.0)
     show haru sad cry
+    pause(1.0)
     show haru frown cry
     haru "We spoke endlessly about everything and nothing. Now, I cannot even remember the sound of your voice."
-    hide haru 
-    pause(2.0)
+    hide haru with fade
+    pause(1.0)
 
     "{b}Days blurred into weeks, but the world outside her window still turned.{/b}" 
     "{b}Flowers bloomed, birds sang, and people lived their lives—everyone except Haru, who was stuck in a place where the pain never seemed to lessen.{/b}"
 
     show haru sad cry
+    pause(0.5)
     show haru frown cry
     haru "Natsu, Natsu! The past couple of days I\'ve missed you so much it felt like missing you is all I am. If my grief is violent enough, perhaps will you come back to life again?"
     show haru sad cry
+    pause(0.5)
     show haru frown cry
     haru "I still wake up with things to tell you."
     show haru sad cry
     pause(1.0)
-    hide haru
 
-    show bg leaning desk
+    scene CG_leaning_desk
     with fade
     pause(2.0)
 
-    show bg telephone
+    scene bg telephone
     with fade
     pause(1.0)
 
@@ -657,106 +783,134 @@ label option1_c3_p2:
     "{b}The phone rang once, then twice. Each ring felt like an eternity.{/b}" 
     "{b}But when the voice on the other end answered, Haru\'s heart skipped a beat. The calmness in the voice soothed her, a warmth she hadn\'t realized she was missing.{/b}"
 
-    show haru sad tear
+    show haru sad tear at center 
+    with dissolve
+    pause(0.5)
     show haru frown sad
     haru "I... I'm not okay,"
     show haru sad tear
+    pause(0.5)
     show haru frown sad
     haru "It\'s about my best friend. I don\'t know how to move on from his death. I\'m lost."
     show haru sad tear
+    pause(0.5)
 
-    hide haru
+    scene bg grey gradien
+    with fade
 
-    show bg grey gradien
-    with dissolve
-
-    show psychologist smile
+    show psychologist smile with dissolve
+    pause(0.5)
     show psychologist talk
     psychologist "It\'s okay, take your time. You can tell me all of your concerns. There\'s only so long you can hold out against a force so strong the whole room can feel it."
     show psychologist smile
+    pause(1.0)
 
-    hide psychologist
+    hide psychologist with fade 
     "{b}The psychologist, gentle and understanding, listened carefully, guiding her to speak.{/b}" 
     "{b}It felt strange, at first, to voice her pain to a stranger, but slowly, she began to unravel. And with each word she said, the weight on her chest became a little lighter.{/b}"
 
     scene black 
     with dissolve
+    pause(1.0)
 
     jump chapter3_part3
 
 label option2_c3_p2:
     "{b}She stared at the phone, her fingers frozen over the screen. She wanted to call. She knew she needed to call. But the thought of exposing her vulnerabilities, her deepest pain, kept her paralyzed.{/b}"
 
-    show haru sad
+    show haru sad at center
+    with dissolve
+    pause(0.5)
     show haru frown
     haru "I am not well. I could have built the Pyramids with the effort it takes me to cling on to life."
     show haru sad
+    pause(0.5)
     show haru frown
     haru "I ache and swell in a hundred places, but mostly in the middle of my heart. I want to die. Leave me alone. I feel I am almost there- where the great terror can dismember me."
     show haru sad
+    pause(0.5)
     
     scene black 
     with fade
 
     "{b}Haru turned away, as she had done countless times before. Maybe another time. Maybe tomorrow. But deep down, she knew she couldn\'t keep running from the grief forever.{/b}"
-
+    pause(1.0)
     jump chapter3_part3
 
 label chapter3_part3:
     scene bg park
+    with fade 
+
     "{b}The days bled into one another, but something shifted within Haru. Slowly, she began to feel the stirrings of something.{/b}"
-    show haru sad
+    show haru sad with dissolve
     menu:
         "{i}{b}(Embraces the journey of healing, learning to live with the grief.){/b}{/i}":
-            show bg hospital 
+            scene bg hospital 
             with fade
-            show haru smile
-            show psychologist smile aright
+            show haru smile at aleft
+            with dissolve
+            show psychologist smile at aright
             "Haru attended her therapy sessions regularly, and each time, she found herself a little more whole." 
             hide psychologist
-            with dissolve
+            with fade
 
+            show haru smile at center
             "She began journaling, capturing her thoughts and feelings in ways she never thought possible. It didn\'t feel like a cure, but more like a step forward."
 
             "The world began to regain its colors again. Natsu\'s memory, while still painful, became a source of love rather than just sorrow."
             
-            show haru smile
             "She even smiled sometimes—without guilt, without fear. It was okay to be happy again."
             show haru smile tear
+            pause(0.5)
             show haru smile sad
             haru "To lose someone you love is to alter your life for ever. You don\'t get over it because \'it\' is the person you loved. The pain stops, there are new people, but the gap never closes. How could it? The particularness of.someone who mattered enough to grieve over is not made anodyne by death. This hole in my heart is in the shape of you and no-one else can fit it. Why would I want them to?"
             show haru smile tear
+            pause(0.5)
             show haru smile sad
             haru "After Natsu died, the world became very clear-as if a window had broken--the world itself became very dear. It was the place Natsu had lived, and as long as I still walked around I could catch glimpses of him. But more than that, when Natsu died I felt as if l had finally entered the larger community of humans"
             show haru smile tear
+            pause(0.5)
             show haru smile sad cry talk
             haru "Now I knew unbearable grief, and I was like other people in this world who had known this. I began to understand that everything I knew and loved would pass away, and I would pass away. I would die like my best friend had died, and the world, the actual \"is-ness\" of it became and remains very precious to me, the wind, running water, voices"
             show haru sad cry
+            pause(1.0)
             jump good_ending_c3_p4
         
         "{i}{b}(Try to forget about the grief entirely, pushing it down again.){/b}{/i}":
             scene black with fade
             "The days continued to pass, and Haru tried to go through life as if nothing had changed. She buried the grief deeper, not allowing herself the space to mourn. She convinced herself it was easier this way, that if she just ignored it, the pain would go away…"
 
-            show haru 
+            show haru sad with dissolve
+            pause(0.5)
+            show haru frown 
             haru "They say, if you immerse your feet in icy water you forget grief for a moment. I did this once, my brother made us cross a cold stream barefoot, that summer, walking in the woods-l was emptied, then elated, blissful; but didn't try it again. Grief returns vengeful after you've repulsed it"
 
-            hide haru 
+            hide haru with fade
+            pause(0.5)
             "...but it never did. Her grief came back tenfold, a shadow she could never escape."
             "It lived in the corners of her laughter, in the weight of her silences, and in the moments she dared to remember."
 
-            show haru 
+            show haru sad cry with dissolve
+            pause(0.5)
+            show haru frown cry with dissolve
             haru "I found him in grief. Which was ever present."
+            show haru sad cry with dissolve
+            pause(0.5)
+            show haru frown cry with dissolve
             haru "Time has flown, and I have not flown with it. I exist, that is all, and I find it nauseating."
+            show haru sad cry with dissolve
+            pause(1.0)
             jump bad_ending_c3_part4
 
 label good_ending_c3_p4:
     scene bg hospital with fade
-    show haru smile
+    show haru smile with dissolve
     "{b}By seeking help and confronting her grief, Haru was able to reclaim parts of herself that she had lost. Through therapy, she learned that while grief would never fully disappear, she could heal and live on.{/b}"
 
-    hide haru
-    show bg good ending with dissolve
+    hide haru with dissolve
+    pause(0.5)
+    show CG_good_ending with fade
+    pause(2.0)
     "{b}Her relationship with Natsu\'s memory remained, but it was no longer a source of overwhelming pain.{/b}"
     "{b}Sometimes grief is acceptance that love has always been inadequate. Sometimes it\'s just another day and the light comes in through the window.{/b}"
     
@@ -764,11 +918,13 @@ label good_ending_c3_p4:
     haru "I know I'll always think of Natsu with something like hurt and nostalgia - and a great deal of love."
     "{b}- THE END -\n- Good Ending -{/b}"
     pause(3.0)
+
     scene black with dissolve
     jump hidden_note
 
 label bad_ending_c3_part4:
-    scene bg bad ending with fade
+    scene CG_bad_ending with fade
+    pause(2.0)
     "{b}Haru, having avoided the help she needed, continued to live under the weight of her grief.{/b}"
     "{b}While the world continued to move on around her, Haru remained in stasis—unwilling to face the truth of her pain. Her grief, unaddressed, would continue to haunt her.{/b}"
 
@@ -785,19 +941,21 @@ label hidden_note:
     scene white with fade
     # play sound "audio/letter.mp4" noloop
     "\nAuthor's Note (Unlocked)\n"
-    pause(2.0)
 
     # play sound "audio/paper.mp4" noloop
+    scene white with fade
     show letter:
         xalign 0.5
         yalign 0.5
-        xzoom 1.3
-        yzoom 1.3
-    with fade
+        xzoom 1.4
+        yzoom 1.4
+    with dissolve
     pause(2.0)
 
+    nar_nvl ""
+
     nar_nvl"""
-    Author\'s Note:\n
+    \n\nAuthor\'s Note:\n
     I sat on a gray stone bench ringed with \n
     the ingénue faces of pink and white impatiens\n 
     and placed my grief in the mouth of language,\n 
@@ -817,9 +975,14 @@ label hidden_note:
 
     """
     pause(2.0)
-    scene white with dissolve
+    scene white with fade
 
+    nvl clear
+
+    $ renpy.end_replay()
+    
     jump end_credit
+
 
 label end_credit:
     scene black with fade

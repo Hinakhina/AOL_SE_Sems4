@@ -371,7 +371,7 @@ screen navigation():
         textbutton _("Preferences") action ShowMenu("preferences")
 
         if main_menu:
-            textbutton _("Album") action ShowMenu("album")
+            textbutton _("Gallery") action ShowMenu("gallery_sceneries")
 
         if _in_replay:
 
@@ -1486,6 +1486,7 @@ style nvl_thought:
     min_width gui.nvl_thought_width
     textalign gui.nvl_thought_xalign
     layout ("subtitle" if gui.nvl_text_xalign else "tex")
+    size 25
 
 style nvl_button:
     properties gui.button_properties("nvl_button")
