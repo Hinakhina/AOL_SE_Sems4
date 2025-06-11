@@ -276,12 +276,14 @@ screen quick_menu():
             # textbutton _("  Skip  ") action Skip() alternate Skip(fast=True, confirm=True)
             imagebutton:
                 auto "gui/button/skip_%s.png"
+                selected_idle "gui/button/skip_selected_idle.png"
                 action Skip() alternate Skip(fast=True, confirm=True)
                 at quick_button_size
 
             # textbutton _("  Auto  ") action Preference("auto-forward", "toggle")
             imagebutton:
                 auto "gui/button/auto_%s.png"
+                selected_idle "gui/button/auto_selected_idle.png"
                 action Preference("auto-forward", "toggle")
                 at quick_button_size
             
@@ -381,7 +383,7 @@ screen navigation():
 
             textbutton _("Main Menu") action MainMenu()
 
-        textbutton _("About") action ShowMenu("about")
+        textbutton _("Credit") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
@@ -629,20 +631,44 @@ screen about():
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
     ## screen.
-    use game_menu(_("About"), scroll="viewport"):
+    use game_menu(_("Credit"), scroll="viewport"):
 
         style_prefix "about"
 
         vbox:
 
             label "[config.name!t]"
-            text _("Version [config.version!t]\n")
+            text _("""
+            \"You hold an absence at your center, as if it were a life.\"\n 
+            This story was born from grief, but it does not end there.\n 
+            If you saw yourself in Haru, please know:\n 
+            You are not alone. Your pain is real. And help is out there.\n 
+            Mental health matters. Just as much as physical health.\n 
+            Just as much as your life.\n\n 
+            🕊️ If you\'re struggling, we encourage you to reach out:\n 
+            Indonesia:\n 
+            Pijar Psikologi — {a=https://pijarpsikologi.org}https://pijarpsikologi.org{/a}\n 
+            Into The Light Indonesia — {a=https://intothelightid.org}https://intothelightid.org{/a}\n 
+            Kemenkes Hotline 119 ext. 8\n\n 
+            International:\n 
+            Mental Health Hotlines (Befrienders Worldwide) — {a=https://www.befrienders.org}https://www.befrienders.org{/a}\n 
+            Lifeline (US) — 988 or {a=https://988lifeline.org}https://988lifeline.org{/a}\n 
+            Samaritans (UK) — 116 123\n\n 
+            💬 Talk to someone. A friend. A family member. A counselor. A helpline.\n 
+            Opening up is not weakness. It\'s courage.\n 
+            Thank you for playing.\n 
+            Thank you for staying.\n\n  
+            — The Dev Team\n  
+            🎗️ SDG 3: Good Health & Well-Being\n 
+            Because everyone deserves access to healing—body and mind.\n 
+            """)
+            text _("\n\nVersion [config.version!t]\n")
 
             ## gui.about is usually set in options.rpy.
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]\n\n\n")
 
 
 style about_label is gui_label
@@ -651,6 +677,20 @@ style about_text is gui_text
 
 style about_label_text:
     size gui.label_text_size
+
+style about_text:
+    textalign gui.nvl_thought_xalign
+    # layout ("subtitle" if gui.nvl_text_xalign else "tex")
+    size 28
+    line_spacing -10
+    # xpos -50
+    # xoffset 100
+    # xalign 0.0
+
+style hyperlink_text:
+    color "#36a7f3"
+    hover_color '#555555'
+    bold False
 
 
 ## Load and Save screens #######################################################
@@ -1487,6 +1527,16 @@ style nvl_thought:
     textalign gui.nvl_thought_xalign
     layout ("subtitle" if gui.nvl_text_xalign else "tex")
     size 25
+
+style nvl_credit:
+    xpos gui.nvl_credit_xoffset
+    xanchor gui.nvl_thought_xalign
+    ypos gui.nvl_thought_ypos
+    xsize gui.nvl_thought_width
+    min_width gui.nvl_thought_width
+    textalign gui.nvl_thought_xalign
+    layout ("subtitle" if gui.nvl_text_xalign else "tex")
+    size 24
 
 style nvl_button:
     properties gui.button_properties("nvl_button")

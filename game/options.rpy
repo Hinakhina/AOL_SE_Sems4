@@ -12,8 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("MentalHealthVN")
-
+define config.name = _("March Flower, April Showers: You Were Gone by the Summer's")
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
@@ -52,7 +51,7 @@ define config.has_voice = True
 
 define config.default_music_volume = 0.7
 define config.default_sfx_volume = 0.7
-define config.default_voice_volume = 0.7
+define config.default_voice_volume = 1.0
 
 
 ## To allow the user to play a test sound on the sound or voice channel,

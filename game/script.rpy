@@ -9,15 +9,38 @@ image CG_bad_ending = "images/CGs/bad_ending.jpg"
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
+
 define aright = Position(xalign=0.6)
 define aleft = Position(xalign=0.3)
 
-define haru = Character("Haru")
-define natsu = Character("Natsu")
-define psychologist = Character("Psychologist")
-define mom = Character("Mom")
+define voices = ['audio/A1.ogg', 'audio/A2.ogg', 'audio/A3.ogg', 'audio/A4.ogg', 'audio/A5.ogg']
+# define voices = ['audio/B1.ogg', 'audio/B2.ogg', 'audio/B3.ogg', 'audio/B4.ogg', 'audio/B5.ogg']
 
-define nar_nvl = nvl_narrator
+init python:
+    import random
+
+    def type_sound(event, interact=True, **kwargs):
+        if not interact:
+            return
+
+        if event == "show":
+            # Play one immediately
+            renpy.sound.play(random.choice(voices), channel="sound")
+            # Then queue N more
+            for _ in range(30):  # Adjust this number as needed
+                renpy.sound.queue(random.choice(voices), channel="sound", loop=False)
+
+        elif event in ["slow_done", "end"]:
+            renpy.sound.stop(channel="sound")
+
+define haru = Character("Haru", callback = type_sound)
+define natsu = Character("Natsu", callback = type_sound)
+define psychologist = Character("Psychologist",callback = type_sound)
+define mom = Character("Mom", callback = type_sound)
+
+define nar_nvl = Character(None, kind=nvl, callback=type_sound, what_style="nvl_thought")
+define credit_nvl = Character(None, kind=nvl, callback=type_sound, what_style="nvl_credit")
+define adv_nvl = Character(None, kind=adv, callback=type_sound)
 
 # The game starts here.
 image splash = "presplash.png"
@@ -41,7 +64,7 @@ label start:
 
     scene bg black 
     with fade
-    "You run away from grief until it finds you in the middle of a sunny street on a beautiful day."
+    adv_nvl "You run away from grief until it finds you in the middle of a sunny street on a beautiful day."
 
     jump chapter1
 
@@ -156,7 +179,7 @@ label continue_c1:
 
     scene CG_playing_card
     with fade 
-    "{b}(Days pass. Quick montage of Haru and Natsu playing cards, talking in the garden, laughing.){/b}"
+    adv_nvl "{b}(Days pass. Quick montage of Haru and Natsu playing cards, talking in the garden, laughing.){/b}"
     haru "We became best friends faster than spring melted into summer."
     haru "Every story he told was like a patch sewn into my chest — mending something I hadn't realized was torn."
 
@@ -235,14 +258,14 @@ label continue_c1:
     
     scene CG_spending_time
     with fade
-    "{b}(April){/b}"
+    adv_nvl "{b}(April){/b}"
 
     scene bg black 
     with fade
     # play sound "audio/emergency.mp4" loop 
     pause (2.0)
-    "The walls of hospitals have heard more prayers than the walls of churches..."
-    "Because love is felt most when it's leaving."
+    adv_nvl "The walls of hospitals have heard more prayers than the walls of churches..."
+    adv_nvl "Because love is felt most when it's leaving."
     # stop sound fadeout 1.0
     pause(2.0)
 
@@ -260,7 +283,7 @@ label continue_c1:
     show haru sad cry
     pause(1.0)
 
-    "Nobody has ever measured, not even the poets, how much the heart can hold."
+    adv_nvl "Nobody has ever measured, not even the poets, how much the heart can hold."
 
     scene bg hospital room night
     with fade
@@ -329,7 +352,7 @@ label chapter2:
     # show natsu ghost smile at aleft:
     #     alpha 0.8
     # with dissolve
-    "{i}(Soft blue-grey rain, petals clinging to the wet pavement. A ghost of a boy smiles faintly in the distance.){/i}"
+    adv_nvl "{i}(Soft blue-grey rain, petals clinging to the wet pavement. A ghost of a boy smiles faintly in the distance.){/i}"
     
     # hide natsu
     # with dissolve
@@ -427,7 +450,7 @@ label chapter2:
 label continue_c2:
     scene bg park
     with fade
-    "{i}Day by day passed{/i}"
+    adv_nvl "{i}Day by day passed{/i}"
 
     scene bg bedroom rainy
     with fade
@@ -529,7 +552,7 @@ label epilog_chapter2:
     with fade
 
 
-    "{b}{i}April showers wash away the footprints, but not the memory.{/i}{/b}"
+    adv_nvl "{b}{i}April showers wash away the footprints, but not the memory.{/i}{/b}"
     
 
     pause(1.0)
@@ -590,7 +613,7 @@ label epilog_chapter2_2:
 
     nar_nvl " "
 
-    nar_nvl "{i}{b}\n\n\n\nLetter from Natsu - 2 (unlocked){/b}{/i}\n\n"
+    nar_nvl "{i}{b}\n\n\nLetter from Natsu - 3 (unlocked){/b}{/i}\n\n"
 
     nar_nvl """
     Haru,\n\n 
@@ -613,7 +636,7 @@ label epilog_chapter2_2:
 label chapter3_part1:
     scene bg black 
     with fade
-    "{b}(Present Day){/b}"
+    adv_nvl "{b}(Present Day){/b}"
 
     scene bg park
     with fade
@@ -626,8 +649,8 @@ label chapter3_part1:
     show haru sad 
     pause(0.5)
     hide haru
-    "The summer sun felt suffocating, as if it could never truly reach Haru anymore."
-    "Everything around her was alive with color, birds chirping, trees swaying, but inside her, it felt like everything had stopped."
+    adv_nvl "The summer sun felt suffocating, as if it could never truly reach Haru anymore."
+    adv_nvl "Everything around her was alive with color, birds chirping, trees swaying, but inside her, it felt like everything had stopped."
 
     show haru sad 
     pause(0.5)
@@ -637,7 +660,7 @@ label chapter3_part1:
     pause(0.5)
 
     hide haru with dissolve
-    "The thought echoed constantly in her mind. He was gone—truly gone."
+    adv_nvl "The thought echoed constantly in her mind. He was gone—truly gone."
 
     show haru sad at aright
     with dissolve
@@ -653,12 +676,12 @@ label chapter3_part1:
 
     hide haru with fade
     pause(0.5)
-    "She walked through the days mechanically. The laughter of her friends seemed distant, a world apart from the one she now inhabited." 
-    "Grief was a constant companion, settling into her bones like a weight she could never escape."
+    adv_nvl "She walked through the days mechanically. The laughter of her friends seemed distant, a world apart from the one she now inhabited." 
+    adv_nvl "Grief was a constant companion, settling into her bones like a weight she could never escape."
 
-    "But the worst part? She didn\'t even know how to ask for help. How do you explain the hole someone left behind? How do you say you\'re slowly drowning in silence when no one seems to notice?"
+    adv_nvl "But the worst part? She didn\'t even know how to ask for help. How do you explain the hole someone left behind? How do you say you\'re slowly drowning in silence when no one seems to notice?"
 
-    "The world kept turning, but Haru couldn\'t keep up."
+    adv_nvl "The world kept turning, but Haru couldn\'t keep up."
 
 
     show haru sad at aright
@@ -671,7 +694,7 @@ label chapter3_part1:
 
     hide haru with fade
     pause(0.5)
-    "The days felt like they were on repeat. The same sun, the same sky, the same ache. And yet, it was as if nothing had changed. Not really. Not for her."
+    adv_nvl "The days felt like they were on repeat. The same sun, the same sky, the same ache. And yet, it was as if nothing had changed. Not really. Not for her."
 
     show haru sad cry at aright
     with dissolve
@@ -695,7 +718,7 @@ label chapter3_part1:
     menu:
         "Mom, Dad... I have something to say.":
             show haru sad
-            "{i}Her voice shook as she spoke, something she had never let anyone hear before.{/i}"
+            adv_nvl "{i}Her voice shook as she spoke, something she had never let anyone hear before.{/i}"
             show haru frown
             haru "I... I don\'t feel right. I can\'t stop thinking about Natsu. Everything feels so distant. I don\'t know how to live like this anymore."
             show haru sad
@@ -711,7 +734,7 @@ label chapter3_part1:
 
         "Mom, Dad... Nevermind.":
             show haru sad
-            "{i}The words stayed lodged in her throat, too heavy to lift. She smiled and nodded as her parents spoke, but inside, her heart cracked. She wasn\'t ready to tell them. Maybe they wouldn\'t understand. Or maybe it wouldn\'t matter.{/i}"
+            adv_nvl "{i}The words stayed lodged in her throat, too heavy to lift. She smiled and nodded as her parents spoke, but inside, her heart cracked. She wasn\'t ready to tell them. Maybe they wouldn\'t understand. Or maybe it wouldn\'t matter.{/i}"
             show haru frown
             haru "How do we tell the sea that we are drowning on land?" 
             show haru sad
@@ -727,8 +750,8 @@ label chapter3_part1:
 label chapter3_part2:
     scene bg bedroom rainy
     with fade
-    "The silence in her room was deafening. She stared at the walls, the photos on her desk, all the things Natsu had touched." 
-    "It was as if her life had stopped moving. The ache inside her chest was relentless, never letting go."
+    adv_nvl "The silence in her room was deafening. She stared at the walls, the photos on her desk, all the things Natsu had touched." 
+    adv_nvl "It was as if her life had stopped moving. The ache inside her chest was relentless, never letting go."
     
     show haru sad at center 
     with dissolve
@@ -742,8 +765,8 @@ label chapter3_part2:
     hide haru with fade
     pause(1.0)
 
-    "{b}Days blurred into weeks, but the world outside her window still turned.{/b}" 
-    "{b}Flowers bloomed, birds sang, and people lived their lives—everyone except Haru, who was stuck in a place where the pain never seemed to lessen.{/b}"
+    adv_nvl "{b}Days blurred into weeks, but the world outside her window still turned.{/b}" 
+    adv_nvl "{b}Flowers bloomed, birds sang, and people lived their lives—everyone except Haru, who was stuck in a place where the pain never seemed to lessen.{/b}"
 
     show haru sad cry
     pause(0.5)
@@ -760,12 +783,14 @@ label chapter3_part2:
     with fade
     pause(2.0)
 
-    scene bg telephone
+    # play sound "" noloop
+
+    scene bg grey
     with fade
     pause(1.0)
 
-    "{i}She found herself reaching for the phone again, the number her mother had given her so many weeks ago still fresh in her mind.{/i}" 
-    "{i}{b}\"It\'s okay to ask for help,\"{/b} she thought. But fear held her back.{/i}"
+    adv_nvl "{i}She found herself reaching for the phone again, the number her mother had given her so many weeks ago still fresh in her mind.{/i}" 
+    adv_nvl "{i}{b}\"It\'s okay to ask for help,\"{/b} she thought. But fear held her back.{/i}"
 
     menu:
         "I should face this grief head-on {i}{b}(call a psychologist){/b}{/i}":
@@ -780,8 +805,8 @@ label chapter3_part2:
 
 label option1_c3_p2:
     scene black with fade
-    "{b}The phone rang once, then twice. Each ring felt like an eternity.{/b}" 
-    "{b}But when the voice on the other end answered, Haru\'s heart skipped a beat. The calmness in the voice soothed her, a warmth she hadn\'t realized she was missing.{/b}"
+    adv_nvl "{b}The phone rang once, then twice. Each ring felt like an eternity.{/b}" 
+    adv_nvl "{b}But when the voice on the other end answered, Haru\'s heart skipped a beat. The calmness in the voice soothed her, a warmth she hadn\'t realized she was missing.{/b}"
 
     show haru sad tear at center 
     with dissolve
@@ -806,8 +831,8 @@ label option1_c3_p2:
     pause(1.0)
 
     hide psychologist with fade 
-    "{b}The psychologist, gentle and understanding, listened carefully, guiding her to speak.{/b}" 
-    "{b}It felt strange, at first, to voice her pain to a stranger, but slowly, she began to unravel. And with each word she said, the weight on her chest became a little lighter.{/b}"
+    adv_nvl "{b}The psychologist, gentle and understanding, listened carefully, guiding her to speak.{/b}" 
+    adv_nvl "{b}It felt strange, at first, to voice her pain to a stranger, but slowly, she began to unravel. And with each word she said, the weight on her chest became a little lighter.{/b}"
 
     scene black 
     with dissolve
@@ -816,7 +841,7 @@ label option1_c3_p2:
     jump chapter3_part3
 
 label option2_c3_p2:
-    "{b}She stared at the phone, her fingers frozen over the screen. She wanted to call. She knew she needed to call. But the thought of exposing her vulnerabilities, her deepest pain, kept her paralyzed.{/b}"
+    adv_nvl "{b}She stared at the phone, her fingers frozen over the screen. She wanted to call. She knew she needed to call. But the thought of exposing her vulnerabilities, her deepest pain, kept her paralyzed.{/b}"
 
     show haru sad at center
     with dissolve
@@ -833,7 +858,7 @@ label option2_c3_p2:
     scene black 
     with fade
 
-    "{b}Haru turned away, as she had done countless times before. Maybe another time. Maybe tomorrow. But deep down, she knew she couldn\'t keep running from the grief forever.{/b}"
+    adv_nvl "{b}Haru turned away, as she had done countless times before. Maybe another time. Maybe tomorrow. But deep down, she knew she couldn\'t keep running from the grief forever.{/b}"
     pause(1.0)
     jump chapter3_part3
 
@@ -841,7 +866,7 @@ label chapter3_part3:
     scene bg park
     with fade 
 
-    "{b}The days bled into one another, but something shifted within Haru. Slowly, she began to feel the stirrings of something.{/b}"
+    adv_nvl "{b}The days bled into one another, but something shifted within Haru. Slowly, she began to feel the stirrings of something.{/b}"
     show haru sad with dissolve
     menu:
         "{i}{b}(Embraces the journey of healing, learning to live with the grief.){/b}{/i}":
@@ -850,16 +875,16 @@ label chapter3_part3:
             show haru smile at aleft
             with dissolve
             show psychologist smile at aright
-            "Haru attended her therapy sessions regularly, and each time, she found herself a little more whole." 
+            adv_nvl "Haru attended her therapy sessions regularly, and each time, she found herself a little more whole." 
             hide psychologist
             with fade
 
             show haru smile at center
-            "She began journaling, capturing her thoughts and feelings in ways she never thought possible. It didn\'t feel like a cure, but more like a step forward."
+            adv_nvl "She began journaling, capturing her thoughts and feelings in ways she never thought possible. It didn\'t feel like a cure, but more like a step forward."
 
-            "The world began to regain its colors again. Natsu\'s memory, while still painful, became a source of love rather than just sorrow."
+            adv_nvl "The world began to regain its colors again. Natsu\'s memory, while still painful, became a source of love rather than just sorrow."
             
-            "She even smiled sometimes—without guilt, without fear. It was okay to be happy again."
+            adv_nvl "She even smiled sometimes—without guilt, without fear. It was okay to be happy again."
             show haru smile tear
             pause(0.5)
             show haru smile sad
@@ -878,7 +903,7 @@ label chapter3_part3:
         
         "{i}{b}(Try to forget about the grief entirely, pushing it down again.){/b}{/i}":
             scene black with fade
-            "The days continued to pass, and Haru tried to go through life as if nothing had changed. She buried the grief deeper, not allowing herself the space to mourn. She convinced herself it was easier this way, that if she just ignored it, the pain would go away…"
+            adv_nvl "The days continued to pass, and Haru tried to go through life as if nothing had changed. She buried the grief deeper, not allowing herself the space to mourn. She convinced herself it was easier this way, that if she just ignored it, the pain would go away…"
 
             show haru sad with dissolve
             pause(0.5)
@@ -887,8 +912,8 @@ label chapter3_part3:
 
             hide haru with fade
             pause(0.5)
-            "...but it never did. Her grief came back tenfold, a shadow she could never escape."
-            "It lived in the corners of her laughter, in the weight of her silences, and in the moments she dared to remember."
+            adv_nvl "...but it never did. Her grief came back tenfold, a shadow she could never escape."
+            adv_nvl "It lived in the corners of her laughter, in the weight of her silences, and in the moments she dared to remember."
 
             show haru sad cry with dissolve
             pause(0.5)
@@ -905,18 +930,18 @@ label chapter3_part3:
 label good_ending_c3_p4:
     scene bg hospital with fade
     show haru smile with dissolve
-    "{b}By seeking help and confronting her grief, Haru was able to reclaim parts of herself that she had lost. Through therapy, she learned that while grief would never fully disappear, she could heal and live on.{/b}"
+    adv_nvl "{b}By seeking help and confronting her grief, Haru was able to reclaim parts of herself that she had lost. Through therapy, she learned that while grief would never fully disappear, she could heal and live on.{/b}"
 
     hide haru with dissolve
     pause(0.5)
     show CG_good_ending with fade
     pause(2.0)
-    "{b}Her relationship with Natsu\'s memory remained, but it was no longer a source of overwhelming pain.{/b}"
-    "{b}Sometimes grief is acceptance that love has always been inadequate. Sometimes it\'s just another day and the light comes in through the window.{/b}"
+    adv_nvl "{b}Her relationship with Natsu\'s memory remained, but it was no longer a source of overwhelming pain.{/b}"
+    adv_nvl "{b}Sometimes grief is acceptance that love has always been inadequate. Sometimes it\'s just another day and the light comes in through the window.{/b}"
     
     haru "When I turned to face grief, I saw that it was just love in a heavy coat."
     haru "I know I'll always think of Natsu with something like hurt and nostalgia - and a great deal of love."
-    "{b}- THE END -\n- Good Ending -{/b}"
+    adv_nvl "{b}- THE END -\n- Good Ending -{/b}"
     pause(3.0)
 
     scene black with dissolve
@@ -925,12 +950,12 @@ label good_ending_c3_p4:
 label bad_ending_c3_part4:
     scene CG_bad_ending with fade
     pause(2.0)
-    "{b}Haru, having avoided the help she needed, continued to live under the weight of her grief.{/b}"
-    "{b}While the world continued to move on around her, Haru remained in stasis—unwilling to face the truth of her pain. Her grief, unaddressed, would continue to haunt her.{/b}"
+    adv_nvl "{b}Haru, having avoided the help she needed, continued to live under the weight of her grief.{/b}"
+    adv_nvl "{b}While the world continued to move on around her, Haru remained in stasis—unwilling to face the truth of her pain. Her grief, unaddressed, would continue to haunt her.{/b}"
 
     haru "I hurled myself into my grief like a dove, like snow on the dead. Angels don't know whether they're moving among the living or the dead."
 
-    "{b}- The END -\n-Bad Ending -{/b}"
+    adv_nvl "{b}- The END -\n-Bad Ending -{/b}"
     pause(3.0)
 
     scene black with dissolve
@@ -938,12 +963,12 @@ label bad_ending_c3_part4:
     jump hidden_note
 
 label hidden_note:
-    scene white with fade
+    scene bg white with fade
     # play sound "audio/letter.mp4" noloop
-    "\nAuthor's Note (Unlocked)\n"
+    adv_nvl "{b}Hidden Note - (Unlocked){/b}\n"
 
     # play sound "audio/paper.mp4" noloop
-    scene white with fade
+    scene bg black with fade
     show letter:
         xalign 0.5
         yalign 0.5
@@ -955,19 +980,17 @@ label hidden_note:
     nar_nvl ""
 
     nar_nvl"""
-    \n\nAuthor\'s Note:\n
-    I sat on a gray stone bench ringed with \n
+    \n\nAuthor\'s Note:\n\n 
+    I sat on a gray stone bench ringed with \n 
     the ingénue faces of pink and white impatiens\n 
     and placed my grief in the mouth of language,\n 
-    the only thing that would grieve with me.\n\n
-
+    the only thing that would grieve with me.\n\n 
     My writing was about you.\n 
-    All I was bewailing in it was\n
+    All I was bewailing in it was\n 
     what I could not weep about on your shoulder.\n 
-    I want to write rage but all\n
-    that comes is sadness.\n\n
-
-    Acceptance.\n
+    I want to write rage but all\n 
+    that comes is sadness.\n\n 
+    Acceptance.\n 
     I finally reach it.\n 
     But something is wrong.\n 
     Grief is a circular staircase,\n 
@@ -975,7 +998,7 @@ label hidden_note:
 
     """
     pause(2.0)
-    scene white with fade
+    scene bg black with fade
 
     nvl clear
 
@@ -985,40 +1008,33 @@ label hidden_note:
 
 
 label end_credit:
-    scene black with fade
-    '''
-            🌸 End Credits Message – "To Those Who Are Still Here" 🌸
-        “You hold an absence at your center, as if it were a life.”
-        This story was born from grief—but it does not end there.
-        If you saw yourself in Haru, please know:
-        You are not alone. Your pain is real. And help is out there.
-        Mental health matters. Just as much as physical health.
-        Just as much as your life.
-        
-        🕊️ If you're struggling, we encourage you to reach out:
-        Indonesia:
-        Pijar Psikologi — https://pijarpsikologi.org
-        Into The Light Indonesia — https://intothelightid.org
-        Kemenkes Hotline 119 ext. 8
+    scene bg black with fade
 
-
-        International:
-        Mental Health Hotlines (Befrienders Worldwide) — https://www.befrienders.org
-        Lifeline (US) — 988 or https://988lifeline.org
-        Samaritans (UK) — 116 123
-
-
-        💬 Talk to someone. A friend. A family member. A counselor. A helpline.
-        Opening up is not weakness. It\'s courage.
-        
-        Thank you for playing.
-        Thank you for staying.
-        
-        — The Dev Team
-        
-        🎗️ SDG 3: Good Health & Well-Being
-        Because everyone deserves access to healing—body and mind.
-    '''
+    credit_nvl """
+    🌸 End Credits Message – \"To Those Who Are Still Here\" 🌸\n 
+    \"You hold an absence at your center, as if it were a life.\"\n 
+    This story was born from grief, but it does not end there.\n 
+    If you saw yourself in Haru, please know:\n 
+    You are not alone. Your pain is real. And help is out there.\n 
+    Mental health matters. Just as much as physical health.\n 
+    Just as much as your life.\n\n 
+    🕊️ If you\'re struggling, we encourage you to reach out:\n 
+    Indonesia:\n 
+    Pijar Psikologi — {a=https://pijarpsikologi.org}https://pijarpsikologi.org{/a}\n 
+    Into The Light Indonesia — {a=https://intothelightid.org}https://intothelightid.org{/a}\n 
+    Kemenkes Hotline 119 ext. 8\n\n 
+    International:\n 
+    Mental Health Hotlines (Befrienders Worldwide) — {a=https://www.befrienders.org}https://www.befrienders.org{/a}\n 
+    Lifeline (US) — 988 or {a=https://988lifeline.org}https://988lifeline.org{/a}\n 
+    Samaritans (UK) — 116 123\n\n 
+    💬 Talk to someone. A friend. A family member. A counselor. A helpline.\n 
+    Opening up is not weakness. It\'s courage.\n 
+    Thank you for playing.\n 
+    Thank you for staying.\n\n  
+    — The Dev Team\n  
+    🎗️ SDG 3: Good Health & Well-Being\n 
+    Because everyone deserves access to healing—body and mind.\n 
+    """
     return  
 
     

@@ -2,9 +2,25 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 318: expected statement.
-    clear nvl
-             ^
+File "game/screens.rpy", line 689: expected 'word' not found.
+    style.hyperlink_text = Style(style.default)
+         ^
+
+File "game/screens.rpy", line 690: expected 'word' not found.
+    style.hyperlink_text.color = "#5DADE2"
+         ^
+
+File "game/screens.rpy", line 691: expected 'word' not found.
+    style.hyperlink_text.hover_color = "#2980B9"
+         ^
+
+File "game/screens.rpy", line 692: expected 'word' not found.
+    style.hyperlink_text.underline = True
+         ^
+
+File "game/screens.rpy", line 693: expected 'word' not found.
+    style.hyperlink_text.bold = True
+         ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Mon Jun  9 03:35:35 2025
+Wed Jun 11 18:11:34 2025

@@ -1,32 +1,44 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 396, in script
-    show haru smile at middle
-  File "game/script.rpy", line 396, in <module>
-    show haru smile at middle
-NameError: name 'middle' is not defined
+  File "renpy/common/00start.rpy", line 201, in script
+    python:
+  File "renpy/common/00start.rpy", line 202, in <module>
+    _init_language()
+  File "renpy/common/00start.rpy", line 83, in _init_language
+    renpy.change_language(language, force=True)
+  File "game/screens.rpy", line 1494, in <module>
+    xoffset gui.nvl_credit_xoffset
+AttributeError: 'StoreModule' object has no attribute 'nvl_credit_xoffset'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 396, in script
-    show haru smile at middle
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 1124, in execute
-    show_imspec(self.imspec, atl=getattr(self, "atl", None))
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 1083, in show_imspec
-    at_list = [ renpy.python.py_eval(i) for i in at_list ]
-  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 1083, in <listcomp>
-    at_list = [ renpy.python.py_eval(i) for i in at_list ]
+  File "renpy/common/00start.rpy", line 201, in script
+    python:
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00start.rpy", line 202, in <module>
+    _init_language()
+  File "renpy/common/00start.rpy", line 83, in _init_language
+    renpy.change_language(language, force=True)
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\translation\__init__.py", line 791, in change_language
+    new_change_language(tl, language)
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\translation\__init__.py", line 746, in new_change_language
+    i.apply()
+  File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\ast.py", line 2813, in apply
+    value = renpy.python.py_eval(expr)
   File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\python.py", line 1218, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "C:\Users\Hina\Documents\renpy-8.3.7-sdk\renpy\python.py", line 1211, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 396, in <module>
-    show haru smile at middle
-NameError: name 'middle' is not defined
+  File "game/screens.rpy", line 1494, in <module>
+    xoffset gui.nvl_credit_xoffset
+AttributeError: 'StoreModule' object has no attribute 'nvl_credit_xoffset'
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 MentalHealthVN 1.0
-Mon Jun  9 02:52:31 2025
+Wed Jun 11 17:33:55 2025
