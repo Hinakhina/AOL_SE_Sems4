@@ -58,6 +58,7 @@ label splashscreen:
     return
 
 label start:
+    play music "audio/bgm/TheQueen.mp3" loop fadein 0.5
     scene bg loading
     with fade
     pause(1.0)
@@ -72,7 +73,9 @@ label chapter1:
     scene bg park
     with fade
 
-    # play music "audio/hospital_ambient.mp3" loop fadein 1.0
+    play voice "audio/sfx/HospitalAmbience.mp3" loop fadein 0.5
+    play audio "audio/sfx/BirdChrips2.mp3" loop
+
     show haru sad 
     with dissolve
     pause (2.0)
@@ -84,7 +87,7 @@ label chapter1:
     haru "I was here again. Another mild fever. Another few days tucked behind white walls."
     show haru sad
     pause(1.0)
-    # play sound "audio/cirp.mp3" noloop fadein 1.0
+
 
     show haru frown
     haru "They said it wasn\'t serious, but somehow it always felt heavier than that."
@@ -97,11 +100,16 @@ label chapter1:
     with MoveTransition(0.5, enter_time_warp=_warper.easein)
     pause(1.0)
 
-    # play sound "audio/steps.mp3" noloop fadein 1.0 
+    # stop voice
+    # stop audio
+    play sound "audio/sfx/WalkPark" loop fadein 0.5 
     
     show natsu hospital smile at aright
     with MoveTransition(1.0, enter=offscreenright, enter_time_warp=_warper.easein)
     stop sound
+    
+    stop music fadeout 0.5
+    play music "audio/bgm/Violet" loop fadein 0.5
 
     pause(1.0)
     show natsu hospital talk 
@@ -168,6 +176,7 @@ label continue_c1:
     scene bg grey
     with fade
 
+
     pause(1.0)
 
     show haru smile
@@ -177,14 +186,25 @@ label continue_c1:
     haru "That\'s how I met Natsu. A boy who lived more in hospital rooms than anywhere else. But he smiled like someone who had the whole world tucked into his pocket."
     show haru smile
 
+    stop music fadeout 0.
+    
     scene CG_playing_card
     with fade 
+
+    play music "audio/bgm/Tenderness.mp3" loop fadein 0.5
+
     adv_nvl "{b}(Days pass. Quick montage of Haru and Natsu playing cards, talking in the garden, laughing.){/b}"
+    
+    play voice "audio/sfx/ShufflingCard.mp3" noloop fadein 0.5
+    
     haru "We became best friends faster than spring melted into summer."
     haru "Every story he told was like a patch sewn into my chest — mending something I hadn't realized was torn."
 
     scene bg park
     with fade
+
+    play voice "audio/sfx/WindBreeze.mp3" noloop fadein 0.5
+
     show natsu hospital smile at aright
     with dissolve
     pause(0.5)
@@ -199,8 +219,13 @@ label continue_c1:
     show haru smile
     pause(1.0)
 
+    stop music fadeout 0.5
+
     scene bg hospital room night 
     with fade 
+
+    play music "audio/bgm/LongNight.mp3" loop fadein 0.5
+
     show natsu hospital smile
     with dissolve
     pause(1.0)
@@ -258,19 +283,29 @@ label continue_c1:
     
     scene CG_spending_time
     with fade
+
     adv_nvl "{b}(April){/b}"
+
+    stop music fadeout 0.5
 
     scene bg black 
     with fade
-    # play sound "audio/emergency.mp4" loop 
+
+    play voice "audio/Ambulance.mp3" loop fadein 0.5 
     pause (2.0)
+
+    play music "audio/bgm/LoveStorySad.mp3" loop fadein 0.5
+
     adv_nvl "The walls of hospitals have heard more prayers than the walls of churches..."
     adv_nvl "Because love is felt most when it's leaving."
-    # stop sound fadeout 1.0
+    stop voice fadeout 0.5
     pause(2.0)
 
     scene bg hospital
     with fade
+
+    play voice "audio/sfx/HeartBeat2.mp3" loop fadein 0.5
+
     show haru sad cry
     with dissolve
     pause(2.0)
@@ -280,6 +315,8 @@ label continue_c1:
     pause(1.0)
     show haru frown cry
     haru "Lord, I fear that this grief will last forever. I put on a brave face and pretend it doesn't bother me, but it does. It does. Where am I to store all this heartache?"
+    
+    play voice "audio/sfx/HeartFlat.mp3" noloop
     show haru sad cry
     pause(1.0)
 
@@ -287,6 +324,9 @@ label continue_c1:
 
     scene bg hospital room night
     with fade
+
+    play voice "audio/sfx/Raindrop.mp3" loop
+
     show haru smile tear at aright
     with dissolve
     pause(2.0)
@@ -299,12 +339,14 @@ label continue_c1:
     show haru smile tear 
     pause(2.0)
 
+    stop voice
+
     jump epilog_chapter1
 
 label epilog_chapter1:
     scene bg black
     with fade
-    # play sound "audio/paper.mp4" noloop
+    play sound "audio/OpenLetter.mp3" noloop
 
     pause(1.0)
     show letter:
@@ -347,11 +389,17 @@ label epilog_chapter1:
 
 
 label chapter2:
+    stop music fadeout 0.5
     scene CG_park_night
     with fade
+
+    play music "audio/bgm/OurLake.mp3" loop fadein 0.5
+
     # show natsu ghost smile at aleft:
     #     alpha 0.8
     # with dissolve
+
+    play voice "audio/sfx/Raindrop.mp3" loop
     adv_nvl "{i}(Soft blue-grey rain, petals clinging to the wet pavement. A ghost of a boy smiles faintly in the distance.){/i}"
     
     # hide natsu
@@ -448,13 +496,18 @@ label chapter2:
             jump continue_c2
 
 label continue_c2:
+    stop voice fadeout 0.5
+
     scene bg park
     with fade
     adv_nvl "{i}Day by day passed{/i}"
+    pause(2.0)
 
     scene bg bedroom rainy
     with fade
-    pause (2.0)
+    pause (1.0)
+
+    play voice "audio/sfx/Raindrop.mp3" loop
 
     show haru smile at aright
     with dissolve
@@ -514,12 +567,21 @@ label continue_c2:
     show haru sad
     pause (0.5)
 
+    stop voice fadeout 0.5
+    stop music fadeout 0.5
+
     scene bg park 
     with fade 
+    play voice "audio/sfx/SchoolBell.mp3" noloop fadein 0.5 fadeout 0.5
+    play music "audio/bgm/FirstSteps.mp3" loop fadein 0.5
+
     show haru sad at aleft
     pause (0.5)
     show haru frown 
     haru "Some days, I would see him in the crowd at school."
+    
+    play voice "audio/sfx/SchoolAmibience.mp3" loop fadein 0.5
+    
     show haru sad 
     pause (0.5)
     show haru frown 
@@ -543,23 +605,24 @@ label continue_c2:
     show haru smile sad
     pause (1.5)
 
+    stop voice fadeout 0.5
 
-    jump epilog_chapter2
-
-
-label epilog_chapter2:
     scene bg black
     with fade
-
 
     adv_nvl "{b}{i}April showers wash away the footprints, but not the memory.{/i}{/b}"
     
 
     pause(1.0)
 
+    jump epilog_chapter2
+
+
+label epilog_chapter2:
     scene bg black with fade 
-    nvl clear
-    # play sound "audio/paper.mp4" noloop
+
+    play voice "audio/OpenLetter.mp3" noloop
+    pause (1.0)
 
     show letter:
         xalign 0.5
@@ -600,7 +663,7 @@ label epilog_chapter2_2:
     scene bg black
     with fade
 
-    # play sound "audio/paper.mp4" noloop
+    play sound "audio/OpenLetter.mp3" noloop
 
     pause(1.0)
     show letter:
@@ -634,8 +697,13 @@ label epilog_chapter2_2:
 
 
 label chapter3_part1:
+    stop music fadeout 0.5
+
     scene bg black 
     with fade
+
+    play music "audio/bgm/LightBetween.mp3" loop fadein 0.5
+
     adv_nvl "{b}(Present Day){/b}"
 
     scene bg park
@@ -644,6 +712,9 @@ label chapter3_part1:
     show haru sad at aright
     with dissolve
     pause(0.5)
+
+    play voice "audio/sfx/BirdChrips2.mp3" noloop
+
     show haru frown 
     haru "First day of June and I miss you more than ever."
     show haru sad 
@@ -704,12 +775,16 @@ label chapter3_part1:
     show haru sad cry 
     pause(0.5)
 
-    # play sound "audio/wind.mp4" noloop
-
     show haru frown cry 
+    play voice "audio/sfx/WindBreeze.mp3" noloop
+
     haru "When the rush of that wind came, Natsu, it was almost you."
     show haru sad cry 
     pause(0.5)
+
+    stop music fadeout 0.5
+
+    play music "audio/bgm/AfterRain.mp3" loop fadein 0.5
 
     scene bg kitchen
     with fade
@@ -717,6 +792,9 @@ label chapter3_part1:
     show haru sad with dissolve
     menu:
         "Mom, Dad... I have something to say.":
+            stop music fadeout 0.5
+            play music "audio/bgm/OneLove.mp3" loop fadein 0.5
+
             show haru sad
             adv_nvl "{i}Her voice shook as she spoke, something she had never let anyone hear before.{/i}"
             show haru frown
@@ -733,6 +811,9 @@ label chapter3_part1:
             jump chapter3_part2
 
         "Mom, Dad... Nevermind.":
+            stop music fadeout 0.5
+            play music "audio/bgm/Moon.mp3" loop fadein 0.5
+
             show haru sad
             adv_nvl "{i}The words stayed lodged in her throat, too heavy to lift. She smiled and nodded as her parents spoke, but inside, her heart cracked. She wasn\'t ready to tell them. Maybe they wouldn\'t understand. Or maybe it wouldn\'t matter.{/i}"
             show haru frown
@@ -794,9 +875,13 @@ label chapter3_part2:
 
     menu:
         "I should face this grief head-on {i}{b}(call a psychologist){/b}{/i}":
+            stop music fadeout 0.5
+            play music "audio/bgm/EveningGlow.mp3" loop fadein 0.5
             jump option1_c3_p2
 
         "I can manage this alone {i}{b}(avoid the call){/b}{/i}":
+            stop music fadeout 0.5
+            play music "audio/bgm/Dance.mp3" loop fadein 0.5
             jump option2_c3_p2
             
 
@@ -805,6 +890,7 @@ label chapter3_part2:
 
 label option1_c3_p2:
     scene black with fade
+    play voice "audio/sfx/Ringing.mp3" loop
     adv_nvl "{b}The phone rang once, then twice. Each ring felt like an eternity.{/b}" 
     adv_nvl "{b}But when the voice on the other end answered, Haru\'s heart skipped a beat. The calmness in the voice soothed her, a warmth she hadn\'t realized she was missing.{/b}"
 
@@ -870,6 +956,8 @@ label chapter3_part3:
     show haru sad with dissolve
     menu:
         "{i}{b}(Embraces the journey of healing, learning to live with the grief.){/b}{/i}":
+            stop music fadeout 0.5
+            play music "audio/bgm/Relax.mp3" loop fadein 0.5
             scene bg hospital 
             with fade
             show haru smile at aleft
@@ -902,6 +990,8 @@ label chapter3_part3:
             jump good_ending_c3_p4
         
         "{i}{b}(Try to forget about the grief entirely, pushing it down again.){/b}{/i}":
+            stop music fadeout 0.5
+            play music "audio/bgm/Dance.mp3" loop fadeout 0.5
             scene black with fade
             adv_nvl "The days continued to pass, and Haru tried to go through life as if nothing had changed. She buried the grief deeper, not allowing herself the space to mourn. She convinced herself it was easier this way, that if she just ignored it, the pain would go away…"
 
@@ -963,12 +1053,15 @@ label bad_ending_c3_part4:
     jump hidden_note
 
 label hidden_note:
+    stop music fadeout 0.5
+    play music "audio/bgm/LongNight.mp3" loop fadein 0.5
     scene bg white with fade
-    # play sound "audio/letter.mp4" noloop
     adv_nvl "{b}Hidden Note - (Unlocked){/b}\n"
 
-    # play sound "audio/paper.mp4" noloop
     scene bg black with fade
+    play sound "audio/OpenLetter.mp3" noloop
+    pause(1.0)
+
     show letter:
         xalign 0.5
         yalign 0.5
@@ -1008,7 +1101,10 @@ label hidden_note:
 
 
 label end_credit:
+
+    stop music fadeout 0.5
     scene bg black with fade
+    play music "audio/bgm/UnbreakableResolve.mp3" loop fadein 0.5
 
     credit_nvl """
     🌸 End Credits Message – \"To Those Who Are Still Here\" 🌸\n 
