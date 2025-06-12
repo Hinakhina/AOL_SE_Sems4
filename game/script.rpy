@@ -13,7 +13,8 @@ image CG_bad_ending = "images/CGs/bad_ending.jpg"
 define aright = Position(xalign=0.6)
 define aleft = Position(xalign=0.3)
 
-define voices = ['audio/A1.ogg', 'audio/A2.ogg', 'audio/A3.ogg', 'audio/A4.ogg', 'audio/A5.ogg']
+define voices = ['audio/A1.mp3', 'audio/A2.mp3', 'audio/A3.mp3', 'audio/A4.mp3', 'audio/A5.mp3']
+# define voices = ['audio/A1.ogg', 'audio/A2.ogg', 'audio/A3.ogg', 'audio/A4.ogg', 'audio/A5.ogg']
 # define voices = ['audio/B1.ogg', 'audio/B2.ogg', 'audio/B3.ogg', 'audio/B4.ogg', 'audio/B5.ogg']
 
 init python:
