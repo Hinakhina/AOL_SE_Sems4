@@ -8,6 +8,7 @@ March Flowers, April Showers: You Were Gone by the Summer's is a short visual no
 ## This game is made using Ren'py 8.3.7
 How to use:
 1. Download ren'py on https://www.renpy.org/
+
    **Notes: If you don't want to download Ren'Py, please download the game from itch.io**
 3. Clone this repository on an empty folder
 4. Open the ren'py
