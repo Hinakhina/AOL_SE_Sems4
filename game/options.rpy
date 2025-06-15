@@ -36,7 +36,7 @@ define gui.about = _p("""
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "MentalHealthVN"
+define build.name = "March_Flower_April_Showers"
 
 
 ## Sounds and music ############################################################
